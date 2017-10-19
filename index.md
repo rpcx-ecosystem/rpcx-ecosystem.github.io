@@ -1,37 +1,26 @@
-## Welcome to GitHub Pages
+## Welcome to RPCX
 
-You can use the [editor on GitHub](https://github.com/rpcx-ecosystem/rpcx-ecosystem.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+[rpcx 3.0](https://github.com/smallnest/rpcx/tree/v3.0) is coming!
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[![License](https://img.shields.io/:license-apache-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![GoDoc](https://godoc.org/github.com/smallnest/rpcx?status.png)](http://godoc.org/github.com/smallnest/rpcx)  [![travis](https://travis-ci.org/smallnest/rpcx.svg?branch=v3.0)](https://travis-ci.org/smallnest/rpcx) [![Go Report Card](https://goreportcard.com/badge/github.com/smallnest/rpcx)](https://goreportcard.com/report/github.com/smallnest/rpcx) [![coveralls](https://coveralls.io/repos/smallnest/rpcx/badge.svg?branch=v3.0&service=github)](https://coveralls.io/github/smallnest/rpcx?branch=v3.0) [![QQ群](https://img.shields.io/:QQ群-398044387-blue.svg)](_documents/images/rpcx_qq.png)
 
-### Markdown
+**installation**
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+`go get -u -v github.com/smallnest/rpcx/...`
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+if you want to use quic/kcp, zookeeper, etcd, consul registry, use those tags. For example, if you want to use all, you can:
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+go get -u -v -tags "udp zookeeper etcd consul" github.com/smallnest/rpcx/...
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+rpcx is a distributed RPC framework like [Alibaba Dubbo](http://dubbo.io/) and [Weibo Motan](https://github.com/weibocom/motan).
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/rpcx-ecosystem/rpcx-ecosystem.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+**rpcx 3.0** has been refactored for:
+1. **Simple**: use in 10 lines, raw go methods
+2. **Performance**: high perforamnce (>= grpc-go)
+3. **Cross-platform**: support _raw slice of bytes_, _JSON_, _Protobuf_ and _protobuf_. So it can be use in java, php, python, c/c++, node.js, c# and other platforms theoretically
+4. **Service governance.**: support zookeeper, etcd and consul.
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
