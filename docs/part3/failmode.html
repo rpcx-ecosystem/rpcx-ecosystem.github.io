@@ -1,0 +1,810 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>FailMode · rpcx Programming</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="smallnest <smallnest@gmail.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-timeline/timeline.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="failmode.html" />
+    
+    
+    <link rel="prev" href="codec.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://rpcx.site/" target="_blank" class="custom-link">rpcx官方站点</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Part Ⅰ</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../part1/quickstart.html">
+            
+                <a href="../part1/quickstart.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    QuickStart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../part1/server.html">
+            
+                <a href="../part1/server.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../part1/client.html">
+            
+                <a href="../part1/client.html">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅱ</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Registry
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#peer2peer">
+            
+                    
+                        <b>2.1.1.</b>
+                    
+                    Peer to Peer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#multiple">
+            
+                    
+                        <b>2.1.2.</b>
+                    
+                    Peer to Multiple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#zookeeper">
+            
+                    
+                        <b>2.1.3.</b>
+                    
+                    Zookeeper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#etcd">
+            
+                    
+                        <b>2.1.4.</b>
+                    
+                    Etcd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#consul">
+            
+                    
+                        <b>2.1.5.</b>
+                    
+                    Consul
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#mdns">
+            
+                    
+                        <b>2.1.6.</b>
+                    
+                    mDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#inprocess">
+            
+                    
+                        <b>2.1.7.</b>
+                    
+                    In process
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅱ</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="codec.html">
+            
+                <a href="codec.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    Codec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="failmode.html">
+            
+                <a href="failmode.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    FailMode
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="failmode.html">
+            
+                <a href="failmode.html#failfast">
+            
+                    
+                        <b>3.2.1.</b>
+                    
+                    Failfast
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="failmode.html">
+            
+                <a href="failmode.html#failover">
+            
+                    
+                        <b>3.2.2.</b>
+                    
+                    Failover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="failmode.html">
+            
+                <a href="failmode.html#failtry">
+            
+                    
+                        <b>3.2.3.</b>
+                    
+                    Failtry
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="selector.html">
+            
+                <a href="selector.html">
+            
+                    
+                        <b>3.3.</b>
+                    
+                    Selector
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="selector.html">
+            
+                <a href="selector.html#random_selector">
+            
+                    
+                        <b>3.3.1.</b>
+                    
+                    Random
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="selector.html">
+            
+                <a href="selector.html#roundrobin_selector">
+            
+                    
+                        <b>3.3.2.</b>
+                    
+                    Roundrobin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="selector.html">
+            
+                <a href="selector.html#hash_selector">
+            
+                    
+                        <b>3.3.3.</b>
+                    
+                    Consistent hashing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="selector.html">
+            
+                <a href="selector.html#weighted_selector">
+            
+                    
+                        <b>3.3.4.</b>
+                    
+                    Weighted
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="selector.html">
+            
+                <a href="selector.html#ping_selector">
+            
+                    
+                        <b>3.3.5.</b>
+                    
+                    Network quality
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="selector.html">
+            
+                <a href="selector.html#geo_selector">
+            
+                    
+                        <b>3.3.6.</b>
+                    
+                    Geography
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="selector.html">
+            
+                <a href="selector.html#user_selector">
+            
+                    
+                        <b>3.3.7.</b>
+                    
+                    Customized Selector
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅳ Plugins</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../part4/metrics.html">
+            
+                <a href="../part4/metrics.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    Metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../part4/rate-limiting.html">
+            
+                <a href="../part4/rate-limiting.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Rate Limiting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../part4/alias.html">
+            
+                <a href="../part4/alias.html">
+            
+                    
+                        <b>4.3.</b>
+                    
+                    Alias
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../part4/auth.md">
+            
+                <span>
+            
+                    
+                        <b>4.4.</b>
+                    
+                    Auth
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../part4/plugin-dev.html">
+            
+                <a href="../part4/plugin-dev.html">
+            
+                    
+                        <b>4.5.</b>
+                    
+                    Plugin Development
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅴ  Others</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../part5/benchmark.html">
+            
+                <a href="../part5/benchmark.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    Benchmark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../part5/ui.html">
+            
+                <a href="../part5/ui.html">
+            
+                    
+                        <b>5.2.</b>
+                    
+                    UI Manager
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../part5/protocol.html">
+            
+                <a href="../part5/protocol.html">
+            
+                    
+                        <b>5.3.</b>
+                    
+                    protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >FailMode</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="failmode"><a name="failmode" class="plugin-anchor" href="#failmode"><i class="fa fa-link" aria-hidden="true"></i></a>FailMode</h1>
+<p>In the distribution architecture such SOA or micro service, you can not guarantee services always work well. Maybe  the server is down or network is slow or broken. So you need to handle invocation failures.</p>
+<p>rpcx has three fail modes to handle invocation failures and you can set it when create XClient.</p>
+<p>FailMode is meaningful only for sync call (<code>XClient.Call</code>).</p>
+<h2 id="failfast"><a name="failfast" class="plugin-anchor" href="#failfast"><i class="fa fa-link" aria-hidden="true"></i></a>Failfast </h2>
+<p>In this mode, rpcx will finished this call if it gets a failure. The failure is not business failure and business failures are normal responses. It may be caused by server crashing or network issues.</p>
+<h2 id="failover"><a name="failover" class="plugin-anchor" href="#failover"><i class="fa fa-link" aria-hidden="true"></i></a>Failover </h2>
+<p>This this mode, rpcx will try another nodes if it gets a failure. it will try <code>retries</code> until the service returns normal response. The <code>retries</code> is defined in <code>Option</code> and it is <code>3</code> in the defaultOption.</p>
+<h2 id="failtry"><a name="failtry" class="plugin-anchor" href="#failtry"><i class="fa fa-link" aria-hidden="true"></i></a>Failtry </h2>
+<p>This this mode, rpcx still try current selected nodes if it gets a failure. it will try <code>retries</code> until the service returns normal response. The <code>retries</code> is defined in <code>Option</code> and it is <code>3</code> in the defaultOption.</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>smallnest</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2017-11-09 21:33:07 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="codec.html" class="navigation navigation-prev " aria-label="Previous page: Codec">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="failmode.html#failfast" class="navigation navigation-next " aria-label="Next page: Failfast">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"FailMode","level":"3.2","depth":1,"next":{"title":"Failfast","level":"3.2.1","depth":2,"anchor":"#failfast","path":"part3/failmode.md","ref":"part3/failmode.md#failfast","articles":[]},"previous":{"title":"Codec","level":"3.1","depth":1,"path":"part3/codec.md","ref":"part3/codec.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","multipart","-toc-ng","page-footer-ex","timeline","katex","disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"timeline":{},"disqus":{"useIdentifier":false,"shortName":"rpcx-programming"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"toc":{"addClass":true,"className":"toc"},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchors":{}},"theme":"default","author":"smallnest <smallnest@gmail.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"rpcx Programming","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"rpcx官方站点":"http://rpcx.site/"}},"gitbook":"*","description":"A guide about rpcx development"},"file":{"path":"part3/failmode.md","mtime":"2017-11-09T13:33:07.821Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-09T14:22:10.513Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

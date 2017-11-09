@@ -1,0 +1,918 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>QuickStart · rpcx Programming</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="smallnest <smallnest@gmail.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-timeline/timeline.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="server.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://rpcx.site/" target="_blank" class="custom-link">rpcx官方站点</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Part Ⅰ</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="quickstart.html">
+            
+                <a href="quickstart.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    QuickStart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="server.html">
+            
+                <a href="server.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="client.html">
+            
+                <a href="client.html">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅱ</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Registry
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#peer2peer">
+            
+                    
+                        <b>2.1.1.</b>
+                    
+                    Peer to Peer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#multiple">
+            
+                    
+                        <b>2.1.2.</b>
+                    
+                    Peer to Multiple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#zookeeper">
+            
+                    
+                        <b>2.1.3.</b>
+                    
+                    Zookeeper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#etcd">
+            
+                    
+                        <b>2.1.4.</b>
+                    
+                    Etcd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#consul">
+            
+                    
+                        <b>2.1.5.</b>
+                    
+                    Consul
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#mdns">
+            
+                    
+                        <b>2.1.6.</b>
+                    
+                    mDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../part2/registry.html">
+            
+                <a href="../part2/registry.html#inprocess">
+            
+                    
+                        <b>2.1.7.</b>
+                    
+                    In process
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅱ</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../part3/codec.html">
+            
+                <a href="../part3/codec.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    Codec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../part3/failmode.html">
+            
+                <a href="../part3/failmode.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    FailMode
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../part3/failmode.html">
+            
+                <a href="../part3/failmode.html#failfast">
+            
+                    
+                        <b>3.2.1.</b>
+                    
+                    Failfast
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../part3/failmode.html">
+            
+                <a href="../part3/failmode.html#failover">
+            
+                    
+                        <b>3.2.2.</b>
+                    
+                    Failover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../part3/failmode.html">
+            
+                <a href="../part3/failmode.html#failtry">
+            
+                    
+                        <b>3.2.3.</b>
+                    
+                    Failtry
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html">
+            
+                    
+                        <b>3.3.</b>
+                    
+                    Selector
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#random_selector">
+            
+                    
+                        <b>3.3.1.</b>
+                    
+                    Random
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#roundrobin_selector">
+            
+                    
+                        <b>3.3.2.</b>
+                    
+                    Roundrobin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#hash_selector">
+            
+                    
+                        <b>3.3.3.</b>
+                    
+                    Consistent hashing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#weighted_selector">
+            
+                    
+                        <b>3.3.4.</b>
+                    
+                    Weighted
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#ping_selector">
+            
+                    
+                        <b>3.3.5.</b>
+                    
+                    Network quality
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#geo_selector">
+            
+                    
+                        <b>3.3.6.</b>
+                    
+                    Geography
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#user_selector">
+            
+                    
+                        <b>3.3.7.</b>
+                    
+                    Customized Selector
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅳ Plugins</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../part4/metrics.html">
+            
+                <a href="../part4/metrics.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    Metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../part4/rate-limiting.html">
+            
+                <a href="../part4/rate-limiting.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Rate Limiting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../part4/alias.html">
+            
+                <a href="../part4/alias.html">
+            
+                    
+                        <b>4.3.</b>
+                    
+                    Alias
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../part4/auth.md">
+            
+                <span>
+            
+                    
+                        <b>4.4.</b>
+                    
+                    Auth
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../part4/plugin-dev.html">
+            
+                <a href="../part4/plugin-dev.html">
+            
+                    
+                        <b>4.5.</b>
+                    
+                    Plugin Development
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅴ  Others</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../part5/benchmark.html">
+            
+                <a href="../part5/benchmark.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    Benchmark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../part5/ui.html">
+            
+                <a href="../part5/ui.html">
+            
+                    
+                        <b>5.2.</b>
+                    
+                    UI Manager
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../part5/protocol.html">
+            
+                <a href="../part5/protocol.html">
+            
+                    
+                        <b>5.3.</b>
+                    
+                    protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >QuickStart</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="quickstart"><a name="quickstart" class="plugin-anchor" href="#quickstart"><i class="fa fa-link" aria-hidden="true"></i></a>QuickStart</h1>
+<h2 id="installation"><a name="installation" class="plugin-anchor" href="#installation"><i class="fa fa-link" aria-hidden="true"></i></a>Installation</h2>
+<p>First, you should install rpcx:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">go</span> get -u -v github.com/smallnest/rpcx/...
+</code></pre>
+<p>It only install the basic features of rpcx. If you want to use etcd, you should add <code>etcd</code> tag:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">go</span> get -u -v -tags <span class="hljs-string">&quot;etcd&quot;</span> github.com/smallnest/rpcx/...
+</code></pre>
+<p>And if you want to use <code>quic</code>, you also need to add <code>quic</code> tag:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">go</span> get -u -v -tags <span class="hljs-string">&quot;quic etcd&quot;</span> github.com/smallnest/rpcx/...
+</code></pre>
+<p>I recommend you to install all tags even though you won&apos;t use them so far:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">go</span> get -u -v -tags <span class="hljs-string">&quot;reuseport quic kcp zookeeper etcd consul ping&quot;</span> github.com/smallnest/rpcx/...
+</code></pre>
+<p><strong>tags</strong> means:</p>
+<ul>
+<li><strong>quic</strong>: support quic transport</li>
+<li><strong>kcp</strong>: support kcp transport</li>
+<li><strong>zookeeper</strong>: support zookeeper register</li>
+<li><strong>etcd</strong>: support etcd register</li>
+<li><strong>consul</strong>: support consul register</li>
+<li><strong>ping</strong>: support network quality load balancing</li>
+<li><strong>reuseport</strong>: support reuseport</li>
+</ul>
+<h2 id="implement-service"><a name="implement-service" class="plugin-anchor" href="#implement-service"><i class="fa fa-link" aria-hidden="true"></i></a>Implement Service</h2>
+<p>You can write your service just like writing a plain Go struct:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;context&quot;</span>
+
+<span class="hljs-keyword">type</span> Args <span class="hljs-keyword">struct</span> {
+    A <span class="hljs-keyword">int</span>
+    B <span class="hljs-keyword">int</span>
+}
+
+<span class="hljs-keyword">type</span> Reply <span class="hljs-keyword">struct</span> {
+    C <span class="hljs-keyword">int</span>
+}
+
+<span class="hljs-keyword">type</span> Arith <span class="hljs-keyword">int</span>
+
+<span class="hljs-keyword">func</span> (t *Arith) Mul(ctx context.Context, args *Args, reply *Reply) error {
+    reply.C = args.A * args.B
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p><code>Arith</code> is a Go type and it has a one method <code>Mul</code>.
+The first parameter of <code>Mul</code> method is <code>context.Context</code>&#x3002;
+The second parameter of <code>Mul</code> method is <code>args</code>&#x3002; It contains request data: <code>A</code> and <code>B</code>&#x3002;
+The third parameter of <code>Mul</code> method is <code>reply</code>&#x3002;It is a pointer to <code>Reply</code>.
+The <code>Mul</code> method returns an error (can be nil).
+<code>Mul</code> sets <code>Reply.C</code>  with result of <code>A * B</code>.</p>
+<p>Now you has defined one service <code>Arith</code> and implemented its <code>Mul</code> method. we will introduce how to explore it to server and how clients to call it in next steps.</p>
+<h2 id="implement-server"><a name="implement-server" class="plugin-anchor" href="#implement-server"><i class="fa fa-link" aria-hidden="true"></i></a>Implement Server</h2>
+<p>You can use three lines to explore the above service:</p>
+<pre><code class="lang-go">    s := server.NewServer()
+    s.RegisterName(<span class="hljs-string">&quot;Arith&quot;</span>, <span class="hljs-built_in">new</span>(Arith), <span class="hljs-string">&quot;&quot;</span>)
+    s.Serve(<span class="hljs-string">&quot;tcp&quot;</span>, <span class="hljs-string">&quot;:8972&quot;</span>)
+</code></pre>
+<p>You register your service with Name <code>Arith</code>&#x3002;</p>
+<p>You can register service by the below:</p>
+<pre><code class="lang-go">s.Register(<span class="hljs-built_in">new</span>(example.Arith), <span class="hljs-string">&quot;&quot;</span>)
+</code></pre>
+<p>It uses the service type name as service name.</p>
+<h2 id="implement-client"><a name="implement-client" class="plugin-anchor" href="#implement-client"><i class="fa fa-link" aria-hidden="true"></i></a>Implement Client</h2>
+<pre><code class="lang-go">    <span class="hljs-comment">// #1</span>
+    d := client.NewPeer2PeerDiscovery(<span class="hljs-string">&quot;tcp@&quot;</span>+*addr, <span class="hljs-string">&quot;&quot;</span>)
+    <span class="hljs-comment">// #2</span>
+    xclient := client.NewXClient(<span class="hljs-string">&quot;Arith&quot;</span>, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    <span class="hljs-keyword">defer</span> xclient.Close()
+
+    <span class="hljs-comment">// #3</span>
+    args := &amp;example.Args{
+        A: <span class="hljs-number">10</span>,
+        B: <span class="hljs-number">20</span>,
+    }
+
+    <span class="hljs-comment">// #4</span>
+    reply := &amp;example.Reply{}
+
+    <span class="hljs-comment">// #5</span>
+    err := xclient.Call(context.Background(), <span class="hljs-string">&quot;Mul&quot;</span>, args, reply)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, err)
+    }
+
+    log.Printf(<span class="hljs-string">&quot;%d * %d = %d&quot;</span>, args.A, args.B, reply.C)
+</code></pre>
+<p><code>#1</code> defines a service discovery implementation. In this example we use the simplest discovery: <code>Peer2PeerDiscovery</code>. Client get the server address by accessing this discovery and connect the server directly.</p>
+<p><code>#2</code> creates a <code>XClient</code>, and passes FailMode, SelectMode and default option.
+FailMode indicates the client how to handle call failures: retry, return fast or retry another server?
+SelectMode indicates the client how to select a server if there are multiple servers for one service.</p>
+<p><code>#3</code> defines the request&#xFF1A; we want to get result of <code>10 * 20</code>. Of course we know the result must be <code>200</code> but we will see whether reply from the server is <code>200</code>.</p>
+<p><code>#4</code> defines the result object, it is a zero value and actually rpcx can use it to know type of the result and then unmarshal the result to it.</p>
+<p><code>#5</code> call the remote service and gets the result synchronously&#x3002;</p>
+<h2 id="call-the-service-asynchronously"><a name="call-the-service-asynchronously" class="plugin-anchor" href="#call-the-service-asynchronously"><i class="fa fa-link" aria-hidden="true"></i></a>Call the service asynchronously</h2>
+<p>You can call the service synchronously:</p>
+<pre><code class="lang-go">    d := client.NewPeer2PeerDiscovery(<span class="hljs-string">&quot;tcp@&quot;</span>+*addr2, <span class="hljs-string">&quot;&quot;</span>)
+    xclient := client.NewXClient(<span class="hljs-string">&quot;Arith&quot;</span>, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    <span class="hljs-keyword">defer</span> xclient.Close()
+
+    args := &amp;example.Args{
+        A: <span class="hljs-number">10</span>,
+        B: <span class="hljs-number">20</span>,
+    }
+
+    reply := &amp;example.Reply{}
+    call, err := xclient.Go(context.Background(), <span class="hljs-string">&quot;Mul&quot;</span>, args, reply, <span class="hljs-literal">nil</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, err)
+    }
+
+    replyCall := &lt;-call.Done
+    <span class="hljs-keyword">if</span> replyCall.Error != <span class="hljs-literal">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, replyCall.Error)
+    } <span class="hljs-keyword">else</span> {
+        log.Printf(<span class="hljs-string">&quot;%d * %d = %d&quot;</span>, args.A, args.B, reply.C)
+    }
+</code></pre>
+<p>You must use <code>xclient.Go</code> to replace <code>xclient.Call</code> and ti returns a channel. You can read the result from the channel.</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>smallnest</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2017-10-30 21:50:51 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="server.html" class="navigation navigation-next " aria-label="Next page: Server">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"QuickStart","level":"1.2","depth":1,"next":{"title":"Server","level":"1.3","depth":1,"path":"part1/server.md","ref":"part1/server.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","multipart","-toc-ng","page-footer-ex","timeline","katex","disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"timeline":{},"disqus":{"useIdentifier":false,"shortName":"rpcx-programming"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"toc":{"addClass":true,"className":"toc"},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchors":{}},"theme":"default","author":"smallnest <smallnest@gmail.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"rpcx Programming","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"rpcx官方站点":"http://rpcx.site/"}},"gitbook":"*","description":"A guide about rpcx development"},"file":{"path":"part1/quickstart.md","mtime":"2017-10-30T13:50:51.888Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-09T14:22:10.513Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

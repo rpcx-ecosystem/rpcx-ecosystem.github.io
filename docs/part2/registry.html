@@ -1,0 +1,1025 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Registry · rpcx Programming</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="smallnest <smallnest@gmail.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-timeline/timeline.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="registry.html" />
+    
+    
+    <link rel="prev" href="../part1/client.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://rpcx.site/" target="_blank" class="custom-link">rpcx官方站点</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">Part Ⅰ</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../part1/quickstart.html">
+            
+                <a href="../part1/quickstart.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    QuickStart
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../part1/server.html">
+            
+                <a href="../part1/server.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../part1/client.html">
+            
+                <a href="../part1/client.html">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅱ</li>
+        
+        
+    
+        <li class="chapter active" data-level="2.1" data-path="registry.html">
+            
+                <a href="registry.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Registry
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="registry.html">
+            
+                <a href="registry.html#peer2peer">
+            
+                    
+                        <b>2.1.1.</b>
+                    
+                    Peer to Peer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="registry.html">
+            
+                <a href="registry.html#multiple">
+            
+                    
+                        <b>2.1.2.</b>
+                    
+                    Peer to Multiple
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="registry.html">
+            
+                <a href="registry.html#zookeeper">
+            
+                    
+                        <b>2.1.3.</b>
+                    
+                    Zookeeper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="registry.html">
+            
+                <a href="registry.html#etcd">
+            
+                    
+                        <b>2.1.4.</b>
+                    
+                    Etcd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="registry.html">
+            
+                <a href="registry.html#consul">
+            
+                    
+                        <b>2.1.5.</b>
+                    
+                    Consul
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="registry.html">
+            
+                <a href="registry.html#mdns">
+            
+                    
+                        <b>2.1.6.</b>
+                    
+                    mDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="registry.html">
+            
+                <a href="registry.html#inprocess">
+            
+                    
+                        <b>2.1.7.</b>
+                    
+                    In process
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅱ</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../part3/codec.html">
+            
+                <a href="../part3/codec.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    Codec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../part3/failmode.html">
+            
+                <a href="../part3/failmode.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    FailMode
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../part3/failmode.html">
+            
+                <a href="../part3/failmode.html#failfast">
+            
+                    
+                        <b>3.2.1.</b>
+                    
+                    Failfast
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../part3/failmode.html">
+            
+                <a href="../part3/failmode.html#failover">
+            
+                    
+                        <b>3.2.2.</b>
+                    
+                    Failover
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../part3/failmode.html">
+            
+                <a href="../part3/failmode.html#failtry">
+            
+                    
+                        <b>3.2.3.</b>
+                    
+                    Failtry
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html">
+            
+                    
+                        <b>3.3.</b>
+                    
+                    Selector
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#random_selector">
+            
+                    
+                        <b>3.3.1.</b>
+                    
+                    Random
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#roundrobin_selector">
+            
+                    
+                        <b>3.3.2.</b>
+                    
+                    Roundrobin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#hash_selector">
+            
+                    
+                        <b>3.3.3.</b>
+                    
+                    Consistent hashing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#weighted_selector">
+            
+                    
+                        <b>3.3.4.</b>
+                    
+                    Weighted
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#ping_selector">
+            
+                    
+                        <b>3.3.5.</b>
+                    
+                    Network quality
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#geo_selector">
+            
+                    
+                        <b>3.3.6.</b>
+                    
+                    Geography
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../part3/selector.html">
+            
+                <a href="../part3/selector.html#user_selector">
+            
+                    
+                        <b>3.3.7.</b>
+                    
+                    Customized Selector
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅳ Plugins</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../part4/metrics.html">
+            
+                <a href="../part4/metrics.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    Metrics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../part4/rate-limiting.html">
+            
+                <a href="../part4/rate-limiting.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Rate Limiting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../part4/alias.html">
+            
+                <a href="../part4/alias.html">
+            
+                    
+                        <b>4.3.</b>
+                    
+                    Alias
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../part4/auth.md">
+            
+                <span>
+            
+                    
+                        <b>4.4.</b>
+                    
+                    Auth
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../part4/plugin-dev.html">
+            
+                <a href="../part4/plugin-dev.html">
+            
+                    
+                        <b>4.5.</b>
+                    
+                    Plugin Development
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part Ⅴ  Others</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../part5/benchmark.html">
+            
+                <a href="../part5/benchmark.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    Benchmark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../part5/ui.html">
+            
+                <a href="../part5/ui.html">
+            
+                    
+                        <b>5.2.</b>
+                    
+                    UI Manager
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../part5/protocol.html">
+            
+                <a href="../part5/protocol.html">
+            
+                    
+                        <b>5.3.</b>
+                    
+                    protocol
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Registry</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="registry"><a name="registry" class="plugin-anchor" href="#registry"><i class="fa fa-link" aria-hidden="true"></i></a>Registry</h1>
+<p>Registry implements service discovery.</p>
+<p><img src="registry.png" alt=""></p>
+<p>Services registered themself into registries and clients can find those service via registries.</p>
+<p>There are some poplular products that can be used as registies, for example, zookeeper, etcd, consul. And many companies implement their registry center.</p>
+<p>rpcx provides out-of-box registry for zookeeper, etcd, consul, mDNS, and it aslo provides peer-to-peer, peer-to-multiple registies. For the test purpose, rpcx aslo has a in-process registgry.</p>
+<h2 id="peer2peer"><a name="peer2peer" class="plugin-anchor" href="#peer2peer"><i class="fa fa-link" aria-hidden="true"></i></a>peer2peer </h2>
+<p>Actually it has no registry. Clients connect services directly. It can be used in a small system and there is only one node for services. You can do few changes to change another registry when your system scales.</p>
+<p>Server doesn&apos;t need to do more configurations.</p>
+<p>Client uses the <code>Peer2PeerDiscovery</code> and only set the network and address of that service.</p>
+<p>Since there is one node, the selector is meanless.</p>
+<pre><code>    d := client.NewPeer2PeerDiscovery(&quot;tcp@&quot;+*addr, &quot;&quot;)
+    xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    defer xclient.Close()
+</code></pre><p><strong> Notice: rpcx uses <code>network@Host:port</code> format to indicates one service. the <code>network</code> can be <code>tcp</code>&#x3001;<code>http</code>&#x3001;<code>unix</code>&#x3001;<code>quic</code> or <code>kcp</code>. The <code>Host</code> can be host name or ip address.</strong></p>
+<p><code>NewXClient</code> must use the service name as the first argument, then failmode, selector, discovery and other options.</p>
+<h2 id="multiple"><a name="multiple" class="plugin-anchor" href="#multiple"><i class="fa fa-link" aria-hidden="true"></i></a>peer2multiple </h2>
+<p>If you has multiple services but has no a center registry. You can configure addresses of services in client programatically.</p>
+<p>Server doesn&apos;t need to do more configurations.</p>
+<p>Client uses the <code>MultipleServersDiscovery</code> and only set the network and address of that service.</p>
+<pre><code class="lang-go">    d := client.NewMultipleServersDiscovery([]*client.KVPair{{Key: *addr1}, {Key: *addr2}})
+    xclient := client.NewXClient(<span class="hljs-string">&quot;Arith&quot;</span>, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    <span class="hljs-keyword">defer</span> xclient.Close()
+</code></pre>
+<p>You must set services info and metadata in MultipleServersDiscovery&#x3002; If some services are added or removed, you can call <code>MultipleServersDiscovery.Update</code> to update service dynamically.</p>
+<pre><code>func (d *MultipleServersDiscovery) Update(pairs []*KVPair)
+</code></pre><h2 id="zookeeper"><a name="zookeeper" class="plugin-anchor" href="#zookeeper"><i class="fa fa-link" aria-hidden="true"></i></a>zookeeper </h2>
+<p>Apache ZooKeeper is a software project of the Apache Software Foundation. It is essentially a distributed hierarchical key-value store, which is used to provide a distributed configuration service, synchronization service, and naming registry for large distributed systems.</p>
+<p>Services must use <code>ZooKeeperRegisterPlugin</code> plugin to register their info into zookeeper, while clients must use <code>ZookeeperDiscovery</code> to get services info.</p>
+<p>You must set ServiceAddress (<code>network@address</code>) and zookeeper address. You should set the basePath so that your services won&apos;t be conflict with other serviced developed by others.</p>
+<p>You can set <code>Metrics</code> and rpcx will update throughputs periodically. If you want to update metrics you must add [Metrics] plugin in server.</p>
+<p>You can set <code>UpdateInterval</code> to refresh the lease. rpcx sets the lease to <code>UpdateInterval * 3</code>. That means if server has not update the lease in  <code>UpdateInterval * 3</code>, this node will be removed from zookeeper.</p>
+<p>```go server.go
+func main() {
+    flag.Parse()</p>
+<pre><code>s := server.NewServer()
+addRegistryPlugin(s)
+
+s.RegisterName(&quot;Arith&quot;, new(example.Arith), &quot;&quot;)
+s.Serve(&quot;tcp&quot;, *addr)
+</code></pre><p>}</p>
+<p>func addRegistryPlugin(s *server.Server) {</p>
+<pre><code>r := &amp;serverplugin.ZooKeeperRegisterPlugin{
+    ServiceAddress:   &quot;tcp@&quot; + *addr,
+    ZooKeeperServers: []string{*zkAddr},
+    BasePath:         *basePath,
+    Metrics:          metrics.NewRegistry(),
+    UpdateInterval:   time.Minute,
+}
+err := r.Start()
+if err != nil {
+    log.Fatal(err)
+}
+s.Plugins.Add(r)
+</code></pre><p>}</p>
+<pre><code>
+
+
+
+Configuration for Client is simple.
+You need to set the zookeeper address and the same basePath to service.
+
+```go client.go
+    d := client.NewZookeeperDiscovery(*basePath, &quot;Arith&quot;,[]string{*zkAddr}, nil)
+    xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    defer xclient.Close()
+</code></pre><h2 id="etcd"><a name="etcd" class="plugin-anchor" href="#etcd"><i class="fa fa-link" aria-hidden="true"></i></a>etcd </h2>
+<p>etcd is a distributed, reliable key-value store for the most critical data of a distributed system.</p>
+<p>Services must use <code>EtcdRegisterPlugin</code> plugin to register their info into etcd, while clients must use <code>EtcdDiscovery</code> to get services info.</p>
+<p>You must set ServiceAddress (<code>network@address</code>) and etcd address. You should set the basePath so that your services won&apos;t be conflict with other serviced developed by others.</p>
+<p>You can set <code>Metrics</code> and rpcx will update throughputs periodically. If you want to update metrics you must add [Metrics] plugin in server.</p>
+<p>You can set <code>UpdateInterval</code> to refresh the lease. rpcx sets the lease to <code>UpdateInterval * 3</code>. That means if server has not update the lease in  <code>UpdateInterval * 3</code>, this node will be removed from etcd.</p>
+<p>```go server.go
+func main() {
+    flag.Parse()</p>
+<pre><code>s := server.NewServer()
+addRegistryPlugin(s)
+
+s.RegisterName(&quot;Arith&quot;, new(example.Arith), &quot;&quot;)
+s.Serve(&quot;tcp&quot;, *addr)
+</code></pre><p>}</p>
+<p>func addRegistryPlugin(s *server.Server) {</p>
+<pre><code>r := &amp;serverplugin.EtcdRegisterPlugin{
+    ServiceAddress: &quot;tcp@&quot; + *addr,
+    EtcdServers:    []string{*etcdAddr},
+    BasePath:       *basePath,
+    Metrics:        metrics.NewRegistry(),
+    UpdateInterval: time.Minute,
+}
+err := r.Start()
+if err != nil {
+    log.Fatal(err)
+}
+s.Plugins.Add(r)
+</code></pre><p>}</p>
+<pre><code>
+
+
+
+Configuration for Client is simple.
+You need to set the etcd address and the same basePath to service.
+
+```go client.go
+    d := client.NewEtcdDiscovery(*basePath, &quot;Arith&quot;,[]string{*etcdAddr}, nil)
+    xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    defer xclient.Close()
+</code></pre><h2 id="consul"><a name="consul" class="plugin-anchor" href="#consul"><i class="fa fa-link" aria-hidden="true"></i></a>consul </h2>
+<p>Consul is a highly available and distributed service discovery and KV store designed with support for the modern data center to make distributed systems and configuration easy.</p>
+<p>Services must use <code>ConsulRegisterPlugin</code> plugin to register their info into consul, while clients must use <code>ConsulDiscovery</code> to get services info.</p>
+<p>You must set ServiceAddress (<code>network@address</code>) and consul address. You should set the basePath so that your services won&apos;t be conflict with other serviced developed by others.</p>
+<p>You can set <code>Metrics</code> and rpcx will update throughputs periodically. If you want to update metrics you must add [Metrics] plugin in server.</p>
+<p>You can set <code>UpdateInterval</code> to refresh the lease. rpcx sets the lease to <code>UpdateInterval * 3</code>. That means if server has not update the lease in  <code>UpdateInterval * 3</code>, this node will be removed from consul.</p>
+<p>```go server.go
+func main() {
+    flag.Parse()</p>
+<pre><code>s := server.NewServer()
+addRegistryPlugin(s)
+
+s.RegisterName(&quot;Arith&quot;, new(example.Arith), &quot;&quot;)
+s.Serve(&quot;tcp&quot;, *addr)
+</code></pre><p>}</p>
+<p>func addRegistryPlugin(s *server.Server) {</p>
+<pre><code>r := &amp;serverplugin.ConsulRegisterPlugin{
+    ServiceAddress: &quot;tcp@&quot; + *addr,
+    ConsulServers:  []string{*consulAddr},
+    BasePath:       *basePath,
+    Metrics:        metrics.NewRegistry(),
+    UpdateInterval: time.Minute,
+}
+err := r.Start()
+if err != nil {
+    log.Fatal(err)
+}
+s.Plugins.Add(r)
+</code></pre><p>}</p>
+<pre><code>
+
+
+
+Configuration for Client is simple.
+You need to set the etcd address and the same basePath to service.
+
+```go client.go
+    d := client.NewConsulDiscovery(*basePath, &quot;Arith&quot;,[]string{*consulAddr}, nil)
+    xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    defer xclient.Close()
+</code></pre><h2 id="mdns"><a name="mdns" class="plugin-anchor" href="#mdns"><i class="fa fa-link" aria-hidden="true"></i></a>mDNS </h2>
+<p>mDNS resolves host names to IP addresses within small networks that do not include a local name server. It is a zero-configuration service, using essentially the same programming interfaces, packet formats and operating semantics as the unicast Domain Name System (DNS). Although Stuart Cheshire designed mDNS to be stand-alone capable, it can work in concert with unicast DNS servers.</p>
+<p>The mDNS protocol is published as <a href="https://tools.ietf.org/html/rfc6762" target="_blank">RFC 6762</a>, uses IP multicast User Datagram Protocol (UDP) packets, and is implemented by the Apple Bonjour, Spotify Connect, Philips Hue, Google Chromecast, and open source Avahi (software) software packages. Android contains an mDNS implementation. mDNS has also been implemented in Windows 10, but its use is limited to discovering networked printers.</p>
+<p>mDNS can work in conjunction with DNS Service Discovery (DNS-SD), a companion zero-configuration technique specified separately in <a href="https://tools.ietf.org/html/rfc6763" target="_blank">RFC 6763</a>.</p>
+<p>Services must use <code>MDNSRegisterPlugin</code> plugin to register their info into mDNS, while clients must use <code>MDNSDiscovery</code> to get services info.</p>
+<p>You must set ServiceAddress (<code>network@address</code>). You should set the basePath so that your services won&apos;t be conflict with other serviced developed by others.</p>
+<p>You can set <code>Metrics</code> and rpcx will update throughputs periodically. If you want to update metrics you must add [Metrics] plugin in server.</p>
+<p>You can set <code>UpdateInterval</code> to refresh tps. If the server is down, it will be removed from mDNS automatically.</p>
+<p>```go server.go
+func main() {
+    flag.Parse()</p>
+<pre><code>s := server.NewServer()
+addRegistryPlugin(s)
+
+s.RegisterName(&quot;Arith&quot;, new(example.Arith), &quot;&quot;)
+s.Serve(&quot;tcp&quot;, *addr)
+</code></pre><p>}</p>
+<p>func addRegistryPlugin(s *server.Server) {</p>
+<pre><code>r := serverplugin.NewMDNSRegisterPlugin(&quot;tcp@&quot;+*addr, 8972, metrics.NewRegistry(), time.Minute, &quot;&quot;)
+err := r.Start()
+if err != nil {
+    log.Fatal(err)
+}
+s.Plugins.Add(r)
+</code></pre><p>}</p>
+<pre><code>
+
+
+
+Configuration for Client is simple.
+You need to set the etcd address and the same basePath to service.
+
+```go client.go
+    d := client.NewMDNSDiscovery(&quot;Arith&quot;, 10*time.Second, 10*time.Second, &quot;&quot;)
+    xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    defer xclient.Close()
+</code></pre><h2 id="inprocess"><a name="inprocess" class="plugin-anchor" href="#inprocess"><i class="fa fa-link" aria-hidden="true"></i></a>In process </h2>
+<p>Inprocess registry is a registry for test purpose. You won&apos;t use it in production.</p>
+<p>When you develop clients, you want to create mock services to integration test. You you can use Inprocess registry and change it to other registries when clients are deployed in production environment.</p>
+<p>This plugin uses <code>reflect</code> to invoke services in the same process.</p>
+<p>You add <code>client.InprocessClient</code> into services&apos; plugin container. And clients use <code>InpreocessDiscovery</code> to find registered services to invoke.</p>
+<p>```go server.go
+func main() {
+    flag.Parse()</p>
+<pre><code>s := server.NewServer()
+addRegistryPlugin(s)
+
+s.RegisterName(&quot;Arith&quot;, new(example.Arith), &quot;&quot;)
+
+go func() {
+    s.Serve(&quot;tcp&quot;, *addr)
+}()
+
+d := client.NewInpreocessDiscovery()
+xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+defer xclient.Close()
+
+args := &amp;example.Args{
+    A: 10,
+    B: 20,
+}
+
+for i := 0; i &lt; 100; i++ {
+
+    reply := &amp;example.Reply{}
+    err := xclient.Call(context.Background(), &quot;Mul&quot;, args, reply)
+    if err != nil {
+        log.Fatalf(&quot;failed to call: %v&quot;, err)
+    }
+
+    log.Printf(&quot;%d * %d = %d&quot;, args.A, args.B, reply.C)
+
+}
+</code></pre><p>}</p>
+<p>func addRegistryPlugin(s *server.Server) {</p>
+<pre><code>r := client.InprocessClient
+s.Plugins.Add(r)
+</code></pre><p>}
+```</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>smallnest</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2017-11-09 21:33:07 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../part1/client.html" class="navigation navigation-prev " aria-label="Previous page: Client">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="registry.html#peer2peer" class="navigation navigation-next " aria-label="Next page: Peer to Peer">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Registry","level":"2.1","depth":1,"next":{"title":"Peer to Peer","level":"2.1.1","depth":2,"anchor":"#peer2peer","path":"part2/registry.md","ref":"part2/registry.md#peer2peer","articles":[]},"previous":{"title":"Client","level":"1.4","depth":1,"path":"part1/client.md","ref":"part1/client.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","multipart","-toc-ng","page-footer-ex","timeline","katex","disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"timeline":{},"disqus":{"useIdentifier":false,"shortName":"rpcx-programming"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"toc":{"addClass":true,"className":"toc"},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchors":{}},"theme":"default","author":"smallnest <smallnest@gmail.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"rpcx Programming","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"rpcx官方站点":"http://rpcx.site/"}},"gitbook":"*","description":"A guide about rpcx development"},"file":{"path":"part2/registry.md","mtime":"2017-11-09T13:33:07.803Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-09T14:22:10.513Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
