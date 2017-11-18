@@ -724,31 +724,21 @@
 <li>size of playload: 4 bytes, uint32</li>
 <li>playload: slice of byte</li>
 </ol>
-<p><code>#4</code> + <code>#6</code> + <code>#8</code> + <code>#10</code> must be equal to <code>#3</code>.</p>
+<p><code>#4</code> + <code>#6</code> + <code>#8</code> + <code>#10 + (4 + 4 + 4 + 4)</code> must be equal to <code>#3</code>.</p>
 <p><code>servicePath</code>&#x3001;<code>serviceMethod</code>&#x3001;<code>key</code> and <code>value</code> in metadata must be UTF-8 string.</p>
 <p>rpcx uses <code>size of an element</code> + <code>element</code> format to define one element. It is like <a href="https://en.wikipedia.org/wiki/Type-length-value" target="_blank">TLV</a>but rpcx doesn&apos;t use <code>Type</code> because <code>Type</code> of those elements are UTF-8 string.</p>
-<p>Use <code>BigEndian</code> for size (integer type, int64, uint32, etc.) </p>
+<p>Use <code>BigEndian</code> for size (integer type, int64, uint32, etc.)</p>
 <p><img src="protocol.jpg" alt=""></p>
 <p>1&#x3001;The first byte must be <code>0x08</code>. It is a magic number.</p>
 <p>2&#x3001;The second byte is <code>version</code>. Current version is 0.</p>
-<p>3&#x3001;MessageType can be:
-  0: Request
-  1: Response</p>
+<p>3&#x3001;MessageType can be:<br>  0: Request<br>  1: Response</p>
 <p>4&#x3001;Heartbeat: bool. This message is heartbeat message or not</p>
 <p>5&#x3001;Oneway: bool. Need return response or not.</p>
-<p>6&#x3001;CompressType:
-  0: don&apos;t compress
-  1: Gzip</p>
-<p>7&#x3001;MessageStatusType: indicates response is an error or a normal response
-  0: Normal
-  1: Error</p>
-<p>8&#x3001;SerializeType
-  0: use raw bytes
-  1: JSON
-  2: Protobuf
-  3: MessagePack</p>
-<p>If one service fails to handle requests, it can return an error. It sets MessageStatusType of response is <code>1</code> (ERROR) and sets the error message in metadata of the response. The key for the error is <strong><strong>rpcx_error</strong></strong>, and the value is error message.</p>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>smallnest</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2017-11-09 21:36:34 </span> </footer>
+<p>6&#x3001;CompressType:<br>  0: don&apos;t compress<br>  1: Gzip</p>
+<p>7&#x3001;MessageStatusType: indicates response is an error or a normal response<br>  0: Normal<br>  1: Error</p>
+<p>8&#x3001;SerializeType<br>  0: use raw bytes<br>  1: JSON<br>  2: Protobuf<br>  3: MessagePack</p>
+<p>If one service fails to handle requests, it can return an error. It sets MessageStatusType of response is <code>1</code> (ERROR) and sets the error message in metadata of the response. The key for the error is <strong>rpcx_error</strong>, and the value is error message.</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>smallnest</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2017-11-18 13:34:57 </span> </footer>
                                 
                                 </section>
                             
@@ -787,7 +777,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"protocol","level":"5.3","depth":1,"previous":{"title":"UI Manager","level":"5.2","depth":1,"path":"part5/ui.md","ref":"part5/ui.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","multipart","-toc-ng","page-footer-ex","timeline","katex","disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"timeline":{},"disqus":{"useIdentifier":false,"shortName":"rpcx-programming"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"toc":{"addClass":true,"className":"toc"},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchors":{}},"theme":"default","author":"smallnest <smallnest@gmail.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"rpcx Programming","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"rpcx官方站点":"http://rpcx.site/"}},"gitbook":"*","description":"A guide about rpcx development"},"file":{"path":"part5/protocol.md","mtime":"2017-11-09T13:36:34.931Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-09T14:22:10.513Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"protocol","level":"5.3","depth":1,"previous":{"title":"UI Manager","level":"5.2","depth":1,"path":"part5/ui.md","ref":"part5/ui.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","multipart","-toc-ng","page-footer-ex","timeline","katex","disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"timeline":{},"disqus":{"useIdentifier":false,"shortName":"rpcx-programming"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"toc":{"addClass":true,"className":"toc"},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchors":{}},"theme":"default","author":"smallnest <smallnest@gmail.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"rpcx Programming","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"rpcx官方站点":"http://rpcx.site/"}},"gitbook":"*","description":"A guide about rpcx development"},"file":{"path":"part5/protocol.md","mtime":"2017-11-18T05:34:57.103Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-18T05:35:17.874Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
