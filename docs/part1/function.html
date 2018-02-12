@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Gateway | rpcx Programming</title>
+        <title>Function as Service | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,10 @@
         
     
     
-    <link rel="next" href="../part6/http_invoke.html" />
+    <link rel="next" href="../part2/registry.html" />
     
     
-    <link rel="prev" href="../part5/protocol.html" />
+    <link rel="prev" href="../part1/transport.html" />
     
 
         
@@ -73,9 +73,9 @@
         
         
     <div class="book"
-        data-level="26"
-        data-chapter-title="Gateway"
-        data-filepath="part6/gateway.md"
+        data-level="5"
+        data-chapter-title="Function as Service"
+        data-filepath="part1/function.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 17:53:13 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -214,7 +214,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="part1/function.html">
+        <li class="chapter active" data-level="5" data-path="part1/function.html">
             
                 
                     <a href="../part1/function.html">
@@ -673,7 +673,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="26" data-path="part6/gateway.html">
+        <li class="chapter " data-level="26" data-path="part6/gateway.html">
             
                 
                     <a href="../part6/gateway.html">
@@ -751,122 +751,64 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="gateway">Gateway</h1>
-<p><a href="https://github.com/rpcx-ecosystem/rpcx-gateway" target="_blank">Gateway</a> is a http gateway for rpcx services.</p>
-<p>You can write rpc http clients in any programming languages such as Java&#x3001;Python&#x3001;C#&#x3001;Node.js&#x3001;Php&#x3001;C\C++&#x3001;Rust and others. See <a href="https://github.com/rpcx-ecosystem/rpcx-gateway/blob/master/examples/README.md" target="_blank">examples</a> for many languages.</p>
-<p>That means, you can use another approach to access rpcx services instead of implementing protocol.</p>
-<h2 id="deployment-models">Deployment models</h2>
-<p>There are two deployment modes: <strong>Gateway</strong> and <strong>Agent</strong>&#x3002;</p>
-<h3 id="gateway">Gateway</h3>
-<p><img src="https://github.com/rpcx-ecosystem/rpcx-gateway/raw/master/doc/gateway.png" alt=""></p>
-<p>You can deploy this as gateway model. Gateway is running at independent servers. Clients sends http requests to gateways, and gateways translate http requests into raw rpcx requests. And then gateways send raw rpcx requests to rpcx services.</p>
-<p>when gateways receive rpcx responses, they translates rpcx responses into http responses and return clients.</p>
-<p>You can scale gateway easily because it is stateless.</p>
-<p>It works like a http load balancer.</p>
-<h3 id="agent">Agent</h3>
-<p><img src="https://github.com/rpcx-ecosystem/rpcx-gateway/raw/master/doc/agent.png" alt=""></p>
-<p>You can also deploy this as agent model. Agents are deploy with clients. They are installed as a daemon application in node of clients. If there are multiple clients in one node, you only need to install one agent.</p>
-<p>Clients send http requests to their local agent. The local agent translate http requests into rpcx requests, send rpcx requests to rpcx services, translate rpcx responses into http ressponses.</p>
-<p>It works like service mesh.</p>
-<h2 id="protocol">Protocol</h2>
-<p>You can send a http request in any programming languages. You must set some extra http headers in requests.</p>
+                        <h1 id="client">Client</h1>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/function" target="_blank">function</a></p>
+<p>In the normal we register methods as services&apos;methods. Methods must follow the below rules:</p>
 <ul>
-<li>X-RPCX-Version: rpcx version</li>
-<li>X-RPCX-MesssageType: set 0 as request</li>
-<li>X-RPCX-Heartbeat: is heartbeat request or not, false in default.</li>
-<li>X-RPCX-Oneway: is one-way request or not, false in default.</li>
-<li>X-RPCX-SerializeType: 0 as raw bytes, 1 as JSON, 2 as protobuf, 3 as msgpack</li>
-<li>X-RPCX-MessageID: message ID, uint64 type</li>
-<li>X-RPCX-ServicePath: service path</li>
-<li>X-RPCX-ServiceMethod: service method</li>
-<li>X-RPCX-Meta: extra metadata</li>
+<li>exported method of exported type</li>
+<li>three arguments, the first is of context.Context, both of exported type for three arguments</li>
+<li>the third argument is a pointer</li>
+<li>one return value, of type error</li>
 </ul>
-<p>For the http response, there are some extra http headers:</p>
+<p>And rpcx can also register raw functions as services and functions must follow the below rules:</p>
 <ul>
-<li>X-RPCX-Version: rpcx version</li>
-<li>X-RPCX-MesssageType: 1 as response</li>
-<li>X-RPCX-Heartbeat: is heartbeat response or not</li>
-<li>X-RPCX-MessageStatusType:  Error or Normal. Error means there is call failure</li>
-<li>X-RPCX-SerializeType: 0 as raw bytes, 1 as JSON, 2 as protobuf, 3 as msgpack</li>
-<li>X-RPCX-MessageID: message ID, uint64 type</li>
-<li>X-RPCX-ServicePath: service path</li>
-<li>X-RPCX-ServiceMethod: service method</li>
-<li>X-RPCX-Meta: extra metadata</li>
-<li>X-RPCX-ErrorMessage: error message if X-RPCX-MessageStatusType is Error</li>
+<li>the function can be exported or not</li>
+<li>three arguments, the first is of context.Context, both of exported type for three arguments</li>
+<li>the third argument is a pointer</li>
+<li>one return value, of type error</li>
 </ul>
-<h2 id="example">Example</h2>
-<p>There is a golang http client example:</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+<p>There is an example.</p>
+<p>Server must use <code>RegisterFunction</code> to register a function and provides a service name.</p>
+<p>```go server.go
+type Args struct {
+    A int
+    B int
+}</p>
+<p>type Reply struct {
+    C int
+}</p>
+<p>func mul(ctx context.Context, args <em>Args, reply </em>Reply) error {
+    reply.C = args.A * args.B
+    return nil
+}</p>
+<p>func main() {
+    flag.Parse()</p>
+<pre><code>s := server.NewServer()
+s.RegisterFunction(&quot;a.fake.service&quot;, mul, &quot;&quot;)
+s.Serve(&quot;tcp&quot;, *addr)
+</code></pre><p>}</p>
+<pre><code>
+Client use the service name and function name to access:
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;bytes&quot;</span>
-    <span class="hljs-string">&quot;io/ioutil&quot;</span>
-    <span class="hljs-string">&quot;log&quot;</span>
-    <span class="hljs-string">&quot;net/http&quot;</span>
+```go client.go
+    d := client.NewPeer2PeerDiscovery(&quot;tcp@&quot;+*addr, &quot;&quot;)
+    xclient := client.NewXClient(&quot;a.fake.service&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    defer xclient.Close()
 
-    <span class="hljs-string">&quot;github.com/rpcx-ecosystem/rpcx-gateway&quot;</span>
-
-    <span class="hljs-string">&quot;github.com/smallnest/rpcx/codec&quot;</span>
-)
-
-<span class="hljs-keyword">type</span> Args <span class="hljs-keyword">struct</span> {
-    A <span class="hljs-typename">int</span>
-    B <span class="hljs-typename">int</span>
-}
-
-<span class="hljs-keyword">type</span> Reply <span class="hljs-keyword">struct</span> {
-    C <span class="hljs-typename">int</span>
-}
-
-<span class="hljs-keyword">func</span> main() {
-    cc := &amp;codec.MsgpackCodec{}
-
-    <span class="hljs-comment">// request </span>
-    args := &amp;Args{
-        A: <span class="hljs-number">10</span>,
-        B: <span class="hljs-number">20</span>,
-    }
-    data, _ := cc.Encode(args)
-
-    req, err := http.NewRequest(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;http://127.0.0.1:9981/&quot;</span>, bytes.NewReader(data))
-    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        log.Fatal(<span class="hljs-string">&quot;failed to create request: &quot;</span>, err)
-        <span class="hljs-keyword">return</span>
+    args := &amp;example.Args{
+        A: 10,
+        B: 20,
     }
 
-    <span class="hljs-comment">// set extra headers</span>
-    h := req.Header
-    h.Set(gateway.XMessageID, <span class="hljs-string">&quot;10000&quot;</span>)
-    h.Set(gateway.XMessageType, <span class="hljs-string">&quot;0&quot;</span>)
-    h.Set(gateway.XSerializeType, <span class="hljs-string">&quot;3&quot;</span>)
-    h.Set(gateway.XServicePath, <span class="hljs-string">&quot;Arith&quot;</span>)
-    h.Set(gateway.XServiceMethod, <span class="hljs-string">&quot;Mul&quot;</span>)
-
-    <span class="hljs-comment">// send to gateway</span>
-    res, err := http.DefaultClient.Do(req)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        log.Fatal(<span class="hljs-string">&quot;failed to call: &quot;</span>, err)
-    }
-    <span class="hljs-keyword">defer</span> res.Body.Close()
-
-    <span class="hljs-comment">// handle http response</span>
-    replyData, err := ioutil.ReadAll(res.Body)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        log.Fatal(<span class="hljs-string">&quot;failed to read response: &quot;</span>, err)
+    reply := &amp;example.Reply{}
+    err := xclient.Call(context.Background(), &quot;mul&quot;, args, reply)
+    if err != nil {
+        log.Fatalf(&quot;failed to call: %v&quot;, err)
     }
 
-    <span class="hljs-comment">// parse reply</span>
-    reply := &amp;Reply{}
-    err = cc.Decode(replyData, reply)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
-        log.Fatal(<span class="hljs-string">&quot;failed to decode reply: &quot;</span>, err)
-    }
-
-    log.Printf(<span class="hljs-string">&quot;%d * %d = %d&quot;</span>, args.A, args.B, reply.C)
-}
-</code></pre>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:33:12
+    log.Printf(&quot;%d * %d = %d&quot;, args.A, args.B, reply.C)
+</code></pre><footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
+2018-02-12 16:15:07
 </span></footer>
                     
                     </section>
@@ -877,10 +819,10 @@
         </div>
 
         
-        <a href="../part5/protocol.html" class="navigation navigation-prev " aria-label="Previous page: protocol"><i class="fa fa-angle-left"></i></a>
+        <a href="../part1/transport.html" class="navigation navigation-prev " aria-label="Previous page: Transport"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../part6/http_invoke.html" class="navigation navigation-next " aria-label="Next page: HTTP Invoke"><i class="fa fa-angle-right"></i></a>
+        <a href="../part2/registry.html" class="navigation navigation-next " aria-label="Next page: Registry"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
