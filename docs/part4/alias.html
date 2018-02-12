@@ -1,716 +1,543 @@
-
 <!DOCTYPE HTML>
-<html lang="" >
+<html lang="en" >
+    
     <head>
+        
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Alias · rpcx Programming</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Alias | rpcx Programming</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="smallnest <smallnest@gmail.com>">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="smallnest &lt;smallnest@gmail.com&gt;">
         
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
-    
     <link rel="stylesheet" href="../gitbook/style.css">
-
     
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-timeline/timeline.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
         
-
-    
-
-    
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
         
     
         
-    
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-multipart/multipart.css">
         
     
         
-    
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-page-footer-ex/style/plugin.css">
         
     
         
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-timeline/timeline.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-disqus/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
     
 
         
     
     
-    <meta name="HandheldFriendly" content="true"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
-    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
-
-    
-    <link rel="next" href="auth.md" />
+    <link rel="next" href="../part4/plugin-dev.html" />
     
     
-    <link rel="prev" href="rate-limiting.html" />
+    <link rel="prev" href="../part4/rate-limiting.html" />
     
 
+        
     </head>
     <body>
         
-<div class="book">
-    <div class="book-summary">
         
+    <div class="book"
+        data-level="12"
+        data-chapter-title="Alias"
+        data-filepath="part4/alias.md"
+        data-basepath=".."
+        data-revision="Mon Feb 12 2018 13:29:14 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
             
-<div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
+            
+            
+                
+                <li>
+                    <a href="http://rpcx.site/" target="blank" class="custom-link">rpcx官方站点</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part1/quickstart.html">
+            
+                
+                    <a href="../part1/quickstart.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        QuickStart
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part1/server.html">
+            
+                
+                    <a href="../part1/server.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Server
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="part1/client.html">
+            
+                
+                    <a href="../part1/client.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Client
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="part2/registry.html">
+            
+                
+                    <a href="../part2/registry.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Registry
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="part2/registry.html">
+            
+            <span><b>4.1.</b> Peer to Peer</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="part2/registry.html">
+            
+            <span><b>4.2.</b> Peer to Multiple</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="part2/registry.html">
+            
+            <span><b>4.3.</b> Zookeeper</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="part2/registry.html">
+            
+            <span><b>4.4.</b> Etcd</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="part2/registry.html">
+            
+            <span><b>4.5.</b> Consul</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="part2/registry.html">
+            
+            <span><b>4.6.</b> mDNS</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="part2/registry.html">
+            
+            <span><b>4.7.</b> In process</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="part3/codec.html">
+            
+                
+                    <a href="../part3/codec.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Codec
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="part3/failmode.html">
+            
+                
+                    <a href="../part3/failmode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        FailMode
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="part3/failmode.html">
+            
+            <span><b>6.1.</b> Failfast</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="part3/failmode.html">
+            
+            <span><b>6.2.</b> Failover</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="part3/failmode.html">
+            
+            <span><b>6.3.</b> Failtry</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="part3/failmode.html">
+            
+            <span><b>6.4.</b> Failbackup</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="part3/fork.html">
+            
+                
+                    <a href="../part3/fork.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Fork
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="part3/broadcast.html">
+            
+                
+                    <a href="../part3/broadcast.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Broadcase
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part3/selector.html">
+            
+                
+                    <a href="../part3/selector.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        Selector
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="part3/selector.html">
+            
+            <span><b>9.1.</b> Random</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="part3/selector.html">
+            
+            <span><b>9.2.</b> Roundrobin</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="part3/selector.html">
+            
+            <span><b>9.3.</b> Consistent hashing</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="part3/selector.html">
+            
+            <span><b>9.4.</b> Weighted</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="part3/selector.html">
+            
+            <span><b>9.5.</b> Network quality</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="part3/selector.html">
+            
+            <span><b>9.6.</b> Geography</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="part3/selector.html">
+            
+            <span><b>9.7.</b> Customized Selector</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="part4/metrics.html">
+            
+                
+                    <a href="../part4/metrics.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Metrics
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="part4/rate-limiting.html">
+            
+                
+                    <a href="../part4/rate-limiting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        Rate Limiting
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="12" data-path="part4/alias.html">
+            
+                
+                    <a href="../part4/alias.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        Alias
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="part4/auth.html">
+            
+            <span><b>13.</b> Auth</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="part4/plugin-dev.html">
+            
+                
+                    <a href="../part4/plugin-dev.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        Plugin Development
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="part5/benchmark.html">
+            
+                
+                    <a href="../part5/benchmark.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        Benchmark
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="part5/ui.html">
+            
+                
+                    <a href="../part5/ui.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        UI Manager
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="part5/protocol.html">
+            
+                
+                    <a href="../part5/protocol.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        protocol
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
 </div>
 
-            
-                <nav role="navigation">
-                
-
-
-<ul class="summary">
-    
-    
-    
-        
-        <li>
-            <a href="http://rpcx.site/" target="_blank" class="custom-link">rpcx官方站点</a>
-        </li>
-    
-    
-
-    
-    <li class="divider"></li>
-    
-
-    
-        
-        <li class="header">Part Ⅰ</li>
-        
-        
-    
-        <li class="chapter " data-level="1.1" data-path="../">
-            
-                <a href="../">
-            
-                    
-                        <b>1.1.</b>
-                    
-                    Introduction
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.2" data-path="../part1/quickstart.html">
-            
-                <a href="../part1/quickstart.html">
-            
-                    
-                        <b>1.2.</b>
-                    
-                    QuickStart
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3" data-path="../part1/server.html">
-            
-                <a href="../part1/server.html">
-            
-                    
-                        <b>1.3.</b>
-                    
-                    Server
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="../part1/client.html">
-            
-                <a href="../part1/client.html">
-            
-                    
-                        <b>1.4.</b>
-                    
-                    Client
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Part Ⅱ</li>
-        
-        
-    
-        <li class="chapter " data-level="2.1" data-path="../part2/registry.html">
-            
-                <a href="../part2/registry.html">
-            
-                    
-                        <b>2.1.</b>
-                    
-                    Registry
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1.1" data-path="../part2/registry.html">
-            
-                <a href="../part2/registry.html#peer2peer">
-            
-                    
-                        <b>2.1.1.</b>
-                    
-                    Peer to Peer
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.2" data-path="../part2/registry.html">
-            
-                <a href="../part2/registry.html#multiple">
-            
-                    
-                        <b>2.1.2.</b>
-                    
-                    Peer to Multiple
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.3" data-path="../part2/registry.html">
-            
-                <a href="../part2/registry.html#zookeeper">
-            
-                    
-                        <b>2.1.3.</b>
-                    
-                    Zookeeper
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4" data-path="../part2/registry.html">
-            
-                <a href="../part2/registry.html#etcd">
-            
-                    
-                        <b>2.1.4.</b>
-                    
-                    Etcd
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.5" data-path="../part2/registry.html">
-            
-                <a href="../part2/registry.html#consul">
-            
-                    
-                        <b>2.1.5.</b>
-                    
-                    Consul
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.6" data-path="../part2/registry.html">
-            
-                <a href="../part2/registry.html#mdns">
-            
-                    
-                        <b>2.1.6.</b>
-                    
-                    mDNS
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.7" data-path="../part2/registry.html">
-            
-                <a href="../part2/registry.html#inprocess">
-            
-                    
-                        <b>2.1.7.</b>
-                    
-                    In process
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Part Ⅱ</li>
-        
-        
-    
-        <li class="chapter " data-level="3.1" data-path="../part3/codec.html">
-            
-                <a href="../part3/codec.html">
-            
-                    
-                        <b>3.1.</b>
-                    
-                    Codec
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2" data-path="../part3/failmode.html">
-            
-                <a href="../part3/failmode.html">
-            
-                    
-                        <b>3.2.</b>
-                    
-                    FailMode
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.2.1" data-path="../part3/failmode.html">
-            
-                <a href="../part3/failmode.html#failfast">
-            
-                    
-                        <b>3.2.1.</b>
-                    
-                    Failfast
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.2" data-path="../part3/failmode.html">
-            
-                <a href="../part3/failmode.html#failover">
-            
-                    
-                        <b>3.2.2.</b>
-                    
-                    Failover
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.2.3" data-path="../part3/failmode.html">
-            
-                <a href="../part3/failmode.html#failtry">
-            
-                    
-                        <b>3.2.3.</b>
-                    
-                    Failtry
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="../part3/selector.html">
-            
-                <a href="../part3/selector.html">
-            
-                    
-                        <b>3.3.</b>
-                    
-                    Selector
-            
-                </a>
-            
-
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="3.3.1" data-path="../part3/selector.html">
-            
-                <a href="../part3/selector.html#random_selector">
-            
-                    
-                        <b>3.3.1.</b>
-                    
-                    Random
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3.2" data-path="../part3/selector.html">
-            
-                <a href="../part3/selector.html#roundrobin_selector">
-            
-                    
-                        <b>3.3.2.</b>
-                    
-                    Roundrobin
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3.3" data-path="../part3/selector.html">
-            
-                <a href="../part3/selector.html#hash_selector">
-            
-                    
-                        <b>3.3.3.</b>
-                    
-                    Consistent hashing
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3.4" data-path="../part3/selector.html">
-            
-                <a href="../part3/selector.html#weighted_selector">
-            
-                    
-                        <b>3.3.4.</b>
-                    
-                    Weighted
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3.5" data-path="../part3/selector.html">
-            
-                <a href="../part3/selector.html#ping_selector">
-            
-                    
-                        <b>3.3.5.</b>
-                    
-                    Network quality
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3.6" data-path="../part3/selector.html">
-            
-                <a href="../part3/selector.html#geo_selector">
-            
-                    
-                        <b>3.3.6.</b>
-                    
-                    Geography
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3.7" data-path="../part3/selector.html">
-            
-                <a href="../part3/selector.html#user_selector">
-            
-                    
-                        <b>3.3.7.</b>
-                    
-                    Customized Selector
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Part Ⅳ Plugins</li>
-        
-        
-    
-        <li class="chapter " data-level="4.1" data-path="metrics.html">
-            
-                <a href="metrics.html">
-            
-                    
-                        <b>4.1.</b>
-                    
-                    Metrics
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.2" data-path="rate-limiting.html">
-            
-                <a href="rate-limiting.html">
-            
-                    
-                        <b>4.2.</b>
-                    
-                    Rate Limiting
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="4.3" data-path="alias.html">
-            
-                <a href="alias.html">
-            
-                    
-                        <b>4.3.</b>
-                    
-                    Alias
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.4" data-path="auth.md">
-            
-                <span>
-            
-                    
-                        <b>4.4.</b>
-                    
-                    Auth
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="4.5" data-path="plugin-dev.html">
-            
-                <a href="plugin-dev.html">
-            
-                    
-                        <b>4.5.</b>
-                    
-                    Plugin Development
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Part Ⅴ  Others</li>
-        
-        
-    
-        <li class="chapter " data-level="5.1" data-path="../part5/benchmark.html">
-            
-                <a href="../part5/benchmark.html">
-            
-                    
-                        <b>5.1.</b>
-                    
-                    Benchmark
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.2" data-path="../part5/ui.html">
-            
-                <a href="../part5/ui.html">
-            
-                    
-                        <b>5.2.</b>
-                    
-                    UI Manager
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.3" data-path="../part5/protocol.html">
-            
-                <a href="../part5/protocol.html">
-            
-                    
-                        <b>5.3.</b>
-                    
-                    protocol
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-
-    <li class="divider"></li>
-
-    <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
-        </a>
-    </li>
-</ul>
-
-
-                </nav>
-            
-        
-    </div>
-
     <div class="book-body">
-        
-            <div class="body-inner">
-                
-                    
-
-<div class="book-header" role="navigation">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
     
 
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Alias</a>
+        <a href="../" >rpcx Programming</a>
     </h1>
 </div>
 
-
-
-
-                    <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            
-<div id="book-search-results">
-    <div class="search-noresults">
-    
-                                <section class="normal markdown-section">
-                                
-                                <h1 id="alias"><a name="alias" class="plugin-anchor" href="#alias"><i class="fa fa-link" aria-hidden="true"></i></a>Alias</h1>
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="alias">Alias</h1>
 <p>This plugin can alias a service and its method.</p>
 <p>For example, the below code use <code>a.b.c.d</code> as the alias of <code>Arith</code>, and <code>Times</code> as the alias of <code>Mul</code>.</p>
 <pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
@@ -722,7 +549,7 @@
     s.Plugins.Add(a)
     s.RegisterName(<span class="hljs-string">&quot;Arith&quot;</span>, <span class="hljs-built_in">new</span>(example.Arith), <span class="hljs-string">&quot;&quot;</span>)
     err := s.Serve(<span class="hljs-string">&quot;reuseport&quot;</span>, *addr)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
         <span class="hljs-built_in">panic</span>(err)
     }
 }
@@ -746,7 +573,7 @@
 
     reply := &amp;example.Reply{}
     err := xclient.Call(context.Background(), <span class="hljs-string">&quot;Times&quot;</span>, args, reply)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
         log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, err)
     }
 
@@ -754,91 +581,61 @@
 
 }
 </code></pre>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> By <em>smallnest</em> </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> <i>updated</i> 2017-11-09 21:52:00 </span> </footer>
-                                
-                                </section>
-                            
-    </div>
-    <div class="search-results">
-        <div class="has-results">
-            
-            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
-            <ul class="search-results-list"></ul>
-            
-        </div>
-        <div class="no-results">
-            
-            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
-            
-        </div>
-    </div>
-</div>
-
-                        </div>
-                    </div>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
+2018-02-11 17:16:28
+</span></footer>
+                    
+                    </section>
                 
+                
+                </div>
             </div>
+        </div>
 
-            
-                
-                <a href="rate-limiting.html" class="navigation navigation-prev " aria-label="Previous page: Rate Limiting">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                
-                
-                <a href="auth.md" class="navigation navigation-next " aria-label="Next page: Auth">
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                
-            
+        
+        <a href="../part4/rate-limiting.html" class="navigation navigation-prev " aria-label="Previous page: Rate Limiting"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../part4/plugin-dev.html" class="navigation navigation-next " aria-label="Next page: Plugin Development"><i class="fa fa-angle-right"></i></a>
         
     </div>
-
-    <script>
-        var gitbook = gitbook || [];
-        gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Alias","level":"4.3","depth":1,"next":{"title":"Auth","level":"4.4","depth":1,"path":"part4/auth.md","ref":"part4/auth.md","articles":[]},"previous":{"title":"Rate Limiting","level":"4.2","depth":1,"path":"part4/rate-limiting.md","ref":"part4/rate-limiting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","multipart","-toc-ng","page-footer-ex","timeline","katex","disqus"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"timeline":{},"disqus":{"useIdentifier":false,"shortName":"rpcx-programming"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"<i>updated</i>"},"toc":{"addClass":true,"className":"toc"},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchors":{}},"theme":"default","author":"smallnest <smallnest@gmail.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"rpcx Programming","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"rpcx官方站点":"http://rpcx.site/"}},"gitbook":"*","description":"A guide about rpcx development"},"file":{"path":"part4/alias.md","mtime":"2017-11-09T13:52:00.298Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-18T05:35:17.874Z"},"basePath":"..","book":{"language":""}});
-        });
-    </script>
 </div>
 
         
-    <script src="../gitbook/gitbook.js"></script>
-    <script src="../gitbook/theme.js"></script>
+<script src="../gitbook/app.js"></script>
+
     
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
     
 
+    
+    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"theme-default":{"showLevel":true},"toc":{"addClass":true,"className":"toc"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_label":"<i>updated</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"disqus":{"shortName":"rpcx-programming","useIdentifier":false},"anchors":{},"multipart":{},"timeline":{},"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
     </body>
+    
 </html>
-
