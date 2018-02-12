@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Server | rpcx Programming</title>
+        <title>Auth | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,10 @@
         
     
     
-    <link rel="next" href="../part1/client.html" />
+    <link rel="next" href="../part4/plugin-dev.html" />
     
     
-    <link rel="prev" href="../part1/quickstart.html" />
+    <link rel="prev" href="../part4/alias.html" />
     
 
         
@@ -73,9 +73,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="Server"
-        data-filepath="part1/server.md"
+        data-level="13"
+        data-chapter-title="Auth"
+        data-filepath="part4/auth.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 15:34:29 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -128,7 +128,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="part1/server.html">
+        <li class="chapter " data-level="2" data-path="part1/server.html">
             
                 
                     <a href="../part1/server.html">
@@ -437,7 +437,7 @@
             
         </li>
     
-        <li class="chapter " data-level="13" data-path="part4/auth.html">
+        <li class="chapter active" data-level="13" data-path="part4/auth.html">
             
                 
                     <a href="../part4/auth.html">
@@ -575,112 +575,64 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="server">Server</h1>
-<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/102basic" target="_blank">102basic</a></p>
-<p>You can implements services in Server side.</p>
-<p>The type of services is not important. You can use customized type to keep states or use <code>struct{}</code> or <code>int</code> simplely.</p>
-<p>You should start a TCP or UDP server to serve services.</p>
-<p>And you can aslo set some plugins to add features to the server.</p>
-<h2 id="service">Service</h2>
-<p>As service providers, you should define some service first.
-Currently rpcx only support exported <code>methods</code> as functions of service.
-And the exported method must satisfy the below rules:</p>
-<ul>
-<li>exported method of exported type</li>
-<li>three arguments, the first is of context.Context, both of exported type or three arguments</li>
-<li>the third argument is a pointer</li>
-<li>one return value, of type error</li>
-</ul>
-<p>in rpcx 3.1 we want to add register raw functions that satisfy last three rules, but for rpcx 3.0, you must use <code>method</code> to implement services.</p>
-<p>you can use <code>RegisterName</code> to register methods of <code>rcvr</code> and name of this service is <code>name</code>.
-If you use <code>Register</code>, the generated service name is type name of <code>rcvr</code>.
-You can add meta data of this service in registry, that can be used by clients or service manager, for example, <code>weight</code>&#x3001;<code>geolocation</code>&#x3001;<code>metrics</code>. </p>
-<pre><code>func (s *Server) Register(rcvr interface{}, metadata string) error
-func (s *Server) RegisterName(name string, rcvr interface{}, metadata string) error
-</code></pre><p>There is an example that implements a <code>Mul</code> method:</p>
-<pre><code class="lang-go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;context&quot;</span>
-
-<span class="hljs-keyword">type</span> Args <span class="hljs-keyword">struct</span> {
-    A <span class="hljs-typename">int</span>
-    B <span class="hljs-typename">int</span>
-}
-
-<span class="hljs-keyword">type</span> Reply <span class="hljs-keyword">struct</span> {
-    C <span class="hljs-typename">int</span>
-}
-
-<span class="hljs-keyword">type</span> Arith <span class="hljs-typename">int</span>
-
-<span class="hljs-keyword">func</span> (t *Arith) Mul(ctx context.Context, args *Args, reply *Reply) error {
-    reply.C = args.A * args.B
-    <span class="hljs-keyword">return</span> <span class="hljs-constant">nil</span>
-}
-</code></pre>
-<p>In this example, you can define <code>Arith</code> as <code>struct{}</code> and it doesn&apos;t affect the this service.</p>
-<p>And you can define <code>args</code> as <code>Args</code>, this service aslo works.</p>
-<h2 id="server">Server</h2>
-<p>After you define services, you should want to explore to users. You should start a TCP server or UDP server to listen.</p>
-<p>The server supports below approaches to start, serve and close:</p>
-<pre><code class="lang-go">    <span class="hljs-keyword">func</span> NewServer(options ...OptionFn) *Server
-    <span class="hljs-keyword">func</span> (s *Server) Close() error
-    <span class="hljs-keyword">func</span> (s *Server) RegisterOnShutdown(f <span class="hljs-keyword">func</span>())
-    <span class="hljs-keyword">func</span> (s *Server) Serve(network, address <span class="hljs-typename">string</span>) (err error)
-    <span class="hljs-keyword">func</span> (s *Server) ServeHTTP(w http.ResponseWriter, req *http.Request)
-</code></pre>
-<p>First you use <code>NewServer</code> to create a server instance with options. Second you can invokde <code>Serve</code> or <code>ServeHTTP</code> to serve.</p>
-<p>The server contains some fields (and unexported fields):</p>
-<pre><code class="lang-go"><span class="hljs-keyword">type</span> Server <span class="hljs-keyword">struct</span> {
-    Plugins PluginContainer
-    <span class="hljs-comment">// AuthFunc can be used to auth.</span>
-    AuthFunc <span class="hljs-keyword">func</span>(ctx context.Context, req *protocol.Message, token <span class="hljs-typename">string</span>) error
-    <span class="hljs-comment">// contains filtered or unexported fields</span>
-}
-</code></pre>
-<p><code>Plugins</code> caontains all plugins in this server. We will introduce it in later chapters.</p>
-<p><code>AuthFunc</code> is a authentication function which can check clients are authorized. It is also introduced later.</p>
-<p>rpcx provides three <code>OptionFn</code> to set options:</p>
-<pre><code class="lang-go">
-    <span class="hljs-keyword">func</span> WithReadTimeout(readTimeout time.Duration) OptionFn
-    <span class="hljs-keyword">func</span> WithTLSConfig(cfg *tls.Config) OptionFn
-    <span class="hljs-keyword">func</span> WithWriteTimeout(writeTimeout time.Duration) OptionFn
-</code></pre>
-<p>It can set readTimeout, writeTimeout and tls.Config.</p>
-<p><code>ServeHTTP</code> uses a HTTP connection to serve services. It hijacks the connnection to communicate with clients.</p>
-<p><code>Serve</code> uses TCP or UDP ptotocol to communicate with clients.</p>
-<p>rpcx supports the below <code>network</code>:</p>
-<ul>
-<li>tcp: recommended network</li>
-<li>http: hijack http connection</li>
-<li>unix: unix domain sockets</li>
-<li>reuseport: use <code>SO_REUSEPORT</code> socket option, only support Linux kernel 3.9+</li>
-<li>quic: support <a href="https://en.wikipedia.org/wiki/QUIC" target="_blank">quic protocol</a></li>
-<li>kcp: sopport <a href="https://github.com/skywind3000/kcp" target="_blank">kcp protocol</a></li>
-</ul>
-<p>There is a server example:</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
-
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;flag&quot;</span>
-
-    example <span class="hljs-string">&quot;github.com/rpcx-ecosystem/rpcx-examples3&quot;</span>
-    <span class="hljs-string">&quot;github.com/smallnest/rpcx/server&quot;</span>
-)
-
-<span class="hljs-keyword">var</span> (
-    addr = flag.String(<span class="hljs-string">&quot;addr&quot;</span>, <span class="hljs-string">&quot;localhost:8972&quot;</span>, <span class="hljs-string">&quot;server address&quot;</span>)
-)
-
-<span class="hljs-keyword">func</span> main() {
+                        <h1 id="auth">Auth</h1>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/auth" target="_blank">auth</a></p>
+<p>For the security, only authorized clients can invoke services.</p>
+<p>Clients must set an authorization token which can gets from OAuth/OAuth2 or granted access token.</p>
+<p>Servers receive requests, first check  the auth token. They reject requests with invalid tokens.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
     flag.Parse()
 
     s := server.NewServer()
-    <span class="hljs-comment">//s.RegisterName(&quot;Arith&quot;, new(example.Arith), &quot;&quot;)</span>
-    s.Register(<span class="hljs-built_in">new</span>(example.Arith), <span class="hljs-string">&quot;&quot;</span>)
-    s.Serve(<span class="hljs-string">&quot;tcp&quot;</span>, *addr)
+    s.RegisterName(<span class="hljs-string">&quot;Arith&quot;</span>, <span class="hljs-built_in">new</span>(example.Arith), <span class="hljs-string">&quot;&quot;</span>)
+    s.AuthFunc = auth
+    s.Serve(<span class="hljs-string">&quot;reuseport&quot;</span>, *addr)
+}
+
+<span class="hljs-keyword">func</span> auth(ctx context.Context, req *protocol.Message, token <span class="hljs-typename">string</span>) error {
+
+    <span class="hljs-keyword">if</span> token == <span class="hljs-string">&quot;bearer tGzv3JOkF0XG5Qx2TlKWIA&quot;</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-constant">nil</span>
+    }
+
+    <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;invalid token&quot;</span>)
+}
+</code></pre>
+<p>Server must define a AuthFunc to validate auth token. In the above example, only requests with token <code>bearer tGzv3JOkF0XG5Qx2TlKWIA</code> are valid.</p>
+<p>Client must set the token:</p>
+<pre><code class="lang-go">
+<span class="hljs-keyword">func</span> main() {
+    flag.Parse()
+
+    d := client.NewPeer2PeerDiscovery(<span class="hljs-string">&quot;tcp@&quot;</span>+*addr, <span class="hljs-string">&quot;&quot;</span>)
+
+    option := client.DefaultOption
+    option.ReadTimeout = <span class="hljs-number">10</span> * time.Second
+
+    xclient := client.NewXClient(<span class="hljs-string">&quot;Arith&quot;</span>, client.Failtry, client.RandomSelect, d, option)
+    <span class="hljs-keyword">defer</span> xclient.Close()
+
+    <span class="hljs-comment">//xclient.Auth(&quot;bearer tGzv3JOkF0XG5Qx2TlKWIA&quot;)</span>
+    xclient.Auth(<span class="hljs-string">&quot;bearer abcdefg1234567&quot;</span>)
+
+    args := &amp;example.Args{
+        A: <span class="hljs-number">10</span>,
+        B: <span class="hljs-number">20</span>,
+    }
+
+    reply := &amp;example.Reply{}
+    ctx := context.WithValue(context.Background(), share.ReqMetaDataKey, <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-typename">string</span>]<span class="hljs-typename">string</span>))
+    err := xclient.Call(ctx, <span class="hljs-string">&quot;Mul&quot;</span>, args, reply)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, err)
+    }
+
+    log.Printf(<span class="hljs-string">&quot;%d * %d = %d&quot;</span>, args.A, args.B, reply.C)
+
 }
 </code></pre>
 <footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:12:02
+2018-02-12 15:28:59
 </span></footer>
                     
                     </section>
@@ -691,10 +643,10 @@ func (s *Server) RegisterName(name string, rcvr interface{}, metadata string) er
         </div>
 
         
-        <a href="../part1/quickstart.html" class="navigation navigation-prev " aria-label="Previous page: QuickStart"><i class="fa fa-angle-left"></i></a>
+        <a href="../part4/alias.html" class="navigation navigation-prev " aria-label="Previous page: Alias"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../part1/client.html" class="navigation navigation-next " aria-label="Next page: Client"><i class="fa fa-angle-right"></i></a>
+        <a href="../part4/plugin-dev.html" class="navigation navigation-next " aria-label="Next page: Plugin Development"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

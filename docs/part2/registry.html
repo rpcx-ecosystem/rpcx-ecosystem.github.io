@@ -77,7 +77,7 @@
         data-chapter-title="Registry"
         data-filepath="part2/registry.md"
         data-basepath=".."
-        data-revision="Mon Feb 12 2018 13:29:14 GMT+0800 (CST)"
+        data-revision="Mon Feb 12 2018 15:34:29 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -439,7 +439,15 @@
     
         <li class="chapter " data-level="13" data-path="part4/auth.html">
             
-            <span><b>13.</b> Auth</span>
+                
+                    <a href="../part4/auth.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        Auth
+                    </a>
             
             
         </li>
@@ -504,6 +512,36 @@
             
         </li>
     
+        <li class="chapter " data-level="18" data-path="part6/gateway.html">
+            
+                
+                    <a href="../part6/gateway.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        Gateway
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="part6/http_invoke.html">
+            
+                
+                    <a href="../part6/http_invoke.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        HTTP Invoke
+                    </a>
+            
+            
+        </li>
+    
 
 
             
@@ -544,6 +582,7 @@
 <p>There are some poplular products that can be used as registies, for example, zookeeper, etcd, consul. And many companies implement their registry center.</p>
 <p>rpcx provides out-of-box registry for zookeeper, etcd, consul, mDNS, and it aslo provides peer-to-peer, peer-to-multiple registies. For the test purpose, rpcx aslo has a in-process registgry.</p>
 <h2 id="peer2peer">peer2peer </h2>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/102basic" target="_blank">102basic</a></p>
 <p>Actually it has no registry. Clients connect services directly. It can be used in a small system and there is only one node for services. You can do few changes to change another registry when your system scales.</p>
 <p>Server doesn&apos;t need to do more configurations.</p>
 <p>Client uses the <code>Peer2PeerDiscovery</code> and only set the network and address of that service.</p>
@@ -554,6 +593,7 @@
 </code></pre><p><strong> Notice: rpcx uses <code>network@Host:port</code> format to indicates one service. the <code>network</code> can be <code>tcp</code>&#x3001;<code>http</code>&#x3001;<code>unix</code>&#x3001;<code>quic</code> or <code>kcp</code>. The <code>Host</code> can be host name or ip address.</strong></p>
 <p><code>NewXClient</code> must use the service name as the first argument, then failmode, selector, discovery and other options.</p>
 <h2 id="multiple">peer2multiple </h2>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/registry/multiple" target="_blank">multiple</a></p>
 <p>If you has multiple services but has no a center registry. You can configure addresses of services in client programatically.</p>
 <p>Server doesn&apos;t need to do more configurations.</p>
 <p>Client uses the <code>MultipleServersDiscovery</code> and only set the network and address of that service.</p>
@@ -564,6 +604,7 @@
 <p>You must set services info and metadata in MultipleServersDiscovery&#x3002; If some services are added or removed, you can call <code>MultipleServersDiscovery.Update</code> to update service dynamically.</p>
 <pre><code>func (d *MultipleServersDiscovery) Update(pairs []*KVPair)
 </code></pre><h2 id="zookeeper">zookeeper </h2>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/registry/zookeeper" target="_blank">zookeeper</a></p>
 <p>Apache ZooKeeper is a software project of the Apache Software Foundation. It is essentially a distributed hierarchical key-value store, which is used to provide a distributed configuration service, synchronization service, and naming registry for large distributed systems.</p>
 <p>Services must use <code>ZooKeeperRegisterPlugin</code> plugin to register their info into zookeeper, while clients must use <code>ZookeeperDiscovery</code> to get services info.</p>
 <p>You must set ServiceAddress (<code>network@address</code>) and zookeeper address. You should set the basePath so that your services won&apos;t be conflict with other serviced developed by others.</p>
@@ -604,6 +645,7 @@ You need to set the zookeeper address and the same basePath to service.
     xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
     defer xclient.Close()
 </code></pre><h2 id="etcd">etcd </h2>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/registry/etcd" target="_blank">etcd</a></p>
 <p>etcd is a distributed, reliable key-value store for the most critical data of a distributed system.</p>
 <p>Services must use <code>EtcdRegisterPlugin</code> plugin to register their info into etcd, while clients must use <code>EtcdDiscovery</code> to get services info.</p>
 <p>You must set ServiceAddress (<code>network@address</code>) and etcd address. You should set the basePath so that your services won&apos;t be conflict with other serviced developed by others.</p>
@@ -644,6 +686,7 @@ You need to set the etcd address and the same basePath to service.
     xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
     defer xclient.Close()
 </code></pre><h2 id="consul">consul </h2>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/registry/consul" target="_blank">consul</a></p>
 <p>Consul is a highly available and distributed service discovery and KV store designed with support for the modern data center to make distributed systems and configuration easy.</p>
 <p>Services must use <code>ConsulRegisterPlugin</code> plugin to register their info into consul, while clients must use <code>ConsulDiscovery</code> to get services info.</p>
 <p>You must set ServiceAddress (<code>network@address</code>) and consul address. You should set the basePath so that your services won&apos;t be conflict with other serviced developed by others.</p>
@@ -684,6 +727,7 @@ You need to set the etcd address and the same basePath to service.
     xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
     defer xclient.Close()
 </code></pre><h2 id="mdns">mDNS </h2>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/registry/mdns" target="_blank">mDNS</a></p>
 <p>mDNS resolves host names to IP addresses within small networks that do not include a local name server. It is a zero-configuration service, using essentially the same programming interfaces, packet formats and operating semantics as the unicast Domain Name System (DNS). Although Stuart Cheshire designed mDNS to be stand-alone capable, it can work in concert with unicast DNS servers.</p>
 <p>The mDNS protocol is published as <a href="https://tools.ietf.org/html/rfc6762" target="_blank">RFC 6762</a>, uses IP multicast User Datagram Protocol (UDP) packets, and is implemented by the Apple Bonjour, Spotify Connect, Philips Hue, Google Chromecast, and open source Avahi (software) software packages. Android contains an mDNS implementation. mDNS has also been implemented in Windows 10, but its use is limited to discovering networked printers.</p>
 <p>mDNS can work in conjunction with DNS Service Discovery (DNS-SD), a companion zero-configuration technique specified separately in <a href="https://tools.ietf.org/html/rfc6763" target="_blank">RFC 6763</a>.</p>
@@ -720,6 +764,7 @@ You need to set the etcd address and the same basePath to service.
     xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
     defer xclient.Close()
 </code></pre><h2 id="inprocess">In process </h2>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/registry/inprocess" target="_blank">inprocess</a></p>
 <p>Inprocess registry is a registry for test purpose. You won&apos;t use it in production.</p>
 <p>When you develop clients, you want to create mock services to integration test. You you can use Inprocess registry and change it to other registries when clients are deployed in production environment.</p>
 <p>This plugin uses <code>reflect</code> to invoke services in the same process.</p>
@@ -763,7 +808,7 @@ s.Plugins.Add(r)
 </code></pre><p>}
 ``` </p>
 <footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-11 17:16:28
+2018-02-12 15:15:33
 </span></footer>
                     
                     </section>

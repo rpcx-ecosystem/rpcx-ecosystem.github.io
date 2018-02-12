@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Server | rpcx Programming</title>
+        <title>Gateway | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,10 @@
         
     
     
-    <link rel="next" href="../part1/client.html" />
+    <link rel="next" href="../part6/http_invoke.html" />
     
     
-    <link rel="prev" href="../part1/quickstart.html" />
+    <link rel="prev" href="../part5/protocol.html" />
     
 
         
@@ -73,9 +73,9 @@
         
         
     <div class="book"
-        data-level="2"
-        data-chapter-title="Server"
-        data-filepath="part1/server.md"
+        data-level="18"
+        data-chapter-title="Gateway"
+        data-filepath="part6/gateway.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 15:34:29 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -128,7 +128,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2" data-path="part1/server.html">
+        <li class="chapter " data-level="2" data-path="part1/server.html">
             
                 
                     <a href="../part1/server.html">
@@ -512,7 +512,7 @@
             
         </li>
     
-        <li class="chapter " data-level="18" data-path="part6/gateway.html">
+        <li class="chapter active" data-level="18" data-path="part6/gateway.html">
             
                 
                     <a href="../part6/gateway.html">
@@ -575,30 +575,63 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="server">Server</h1>
-<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/102basic" target="_blank">102basic</a></p>
-<p>You can implements services in Server side.</p>
-<p>The type of services is not important. You can use customized type to keep states or use <code>struct{}</code> or <code>int</code> simplely.</p>
-<p>You should start a TCP or UDP server to serve services.</p>
-<p>And you can aslo set some plugins to add features to the server.</p>
-<h2 id="service">Service</h2>
-<p>As service providers, you should define some service first.
-Currently rpcx only support exported <code>methods</code> as functions of service.
-And the exported method must satisfy the below rules:</p>
+                        <h1 id="gateway">Gateway</h1>
+<p><a href="https://github.com/rpcx-ecosystem/rpcx-gateway" target="_blank">Gateway</a> is a http gateway for rpcx services.</p>
+<p>You can write rpc http clients in any programming languages such as Java&#x3001;Python&#x3001;C#&#x3001;Node.js&#x3001;Php&#x3001;C\C++&#x3001;Rust and others. See <a href="https://github.com/rpcx-ecosystem/rpcx-gateway/blob/master/examples/README.md" target="_blank">examples</a> for many languages.</p>
+<p>That means, you can use another approach to access rpcx services instead of implementing protocol.</p>
+<h2 id="deployment-models">Deployment models</h2>
+<p>There are two deployment modes: <strong>Gateway</strong> and <strong>Agent</strong>&#x3002;</p>
+<h3 id="gateway">Gateway</h3>
+<p><img src="https://github.com/rpcx-ecosystem/rpcx-gateway/raw/master/doc/gateway.png" alt=""></p>
+<p>You can deploy this as gateway model. Gateway is running at independent servers. Clients sends http requests to gateways, and gateways translate http requests into raw rpcx requests. And then gateways send raw rpcx requests to rpcx services.</p>
+<p>when gateways receive rpcx responses, they translates rpcx responses into http responses and return clients.</p>
+<p>You can scale gateway easily because it is stateless.</p>
+<p>It works like a http load balancer.</p>
+<h3 id="agent">Agent</h3>
+<p><img src="https://github.com/rpcx-ecosystem/rpcx-gateway/raw/master/doc/agent.png" alt=""></p>
+<p>You can also deploy this as agent model. Agents are deploy with clients. They are installed as a daemon application in node of clients. If there are multiple clients in one node, you only need to install one agent.</p>
+<p>Clients send http requests to their local agent. The local agent translate http requests into rpcx requests, send rpcx requests to rpcx services, translate rpcx responses into http ressponses.</p>
+<p>It works like service mesh.</p>
+<h2 id="protocol">Protocol</h2>
+<p>You can send a http request in any programming languages. You must set some extra http headers in requests.</p>
 <ul>
-<li>exported method of exported type</li>
-<li>three arguments, the first is of context.Context, both of exported type or three arguments</li>
-<li>the third argument is a pointer</li>
-<li>one return value, of type error</li>
+<li>X-RPCX-Version: rpcx version</li>
+<li>X-RPCX-MesssageType: set 0 as request</li>
+<li>X-RPCX-Heartbeat: is heartbeat request or not, false in default.</li>
+<li>X-RPCX-Oneway: is one-way request or not, false in default.</li>
+<li>X-RPCX-SerializeType: 0 as raw bytes, 1 as JSON, 2 as protobuf, 3 as msgpack</li>
+<li>X-RPCX-MessageID: message ID, uint64 type</li>
+<li>X-RPCX-ServicePath: service path</li>
+<li>X-RPCX-ServiceMethod: service method</li>
+<li>X-RPCX-Meta: extra metadata</li>
 </ul>
-<p>in rpcx 3.1 we want to add register raw functions that satisfy last three rules, but for rpcx 3.0, you must use <code>method</code> to implement services.</p>
-<p>you can use <code>RegisterName</code> to register methods of <code>rcvr</code> and name of this service is <code>name</code>.
-If you use <code>Register</code>, the generated service name is type name of <code>rcvr</code>.
-You can add meta data of this service in registry, that can be used by clients or service manager, for example, <code>weight</code>&#x3001;<code>geolocation</code>&#x3001;<code>metrics</code>. </p>
-<pre><code>func (s *Server) Register(rcvr interface{}, metadata string) error
-func (s *Server) RegisterName(name string, rcvr interface{}, metadata string) error
-</code></pre><p>There is an example that implements a <code>Mul</code> method:</p>
-<pre><code class="lang-go"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;context&quot;</span>
+<p>For the http response, there are some extra http headers:</p>
+<ul>
+<li>X-RPCX-Version: rpcx version</li>
+<li>X-RPCX-MesssageType: 1 as response</li>
+<li>X-RPCX-Heartbeat: is heartbeat response or not</li>
+<li>X-RPCX-MessageStatusType:  Error or Normal. Error means there is call failure</li>
+<li>X-RPCX-SerializeType: 0 as raw bytes, 1 as JSON, 2 as protobuf, 3 as msgpack</li>
+<li>X-RPCX-MessageID: message ID, uint64 type</li>
+<li>X-RPCX-ServicePath: service path</li>
+<li>X-RPCX-ServiceMethod: service method</li>
+<li>X-RPCX-Meta: extra metadata</li>
+<li>X-RPCX-ErrorMessage: error message if X-RPCX-MessageStatusType is Error</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>There is a golang http client example:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;bytes&quot;</span>
+    <span class="hljs-string">&quot;io/ioutil&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+    <span class="hljs-string">&quot;net/http&quot;</span>
+
+    <span class="hljs-string">&quot;github.com/rpcx-ecosystem/rpcx-gateway&quot;</span>
+
+    <span class="hljs-string">&quot;github.com/smallnest/rpcx/codec&quot;</span>
+)
 
 <span class="hljs-keyword">type</span> Args <span class="hljs-keyword">struct</span> {
     A <span class="hljs-typename">int</span>
@@ -609,78 +642,55 @@ func (s *Server) RegisterName(name string, rcvr interface{}, metadata string) er
     C <span class="hljs-typename">int</span>
 }
 
-<span class="hljs-keyword">type</span> Arith <span class="hljs-typename">int</span>
-
-<span class="hljs-keyword">func</span> (t *Arith) Mul(ctx context.Context, args *Args, reply *Reply) error {
-    reply.C = args.A * args.B
-    <span class="hljs-keyword">return</span> <span class="hljs-constant">nil</span>
-}
-</code></pre>
-<p>In this example, you can define <code>Arith</code> as <code>struct{}</code> and it doesn&apos;t affect the this service.</p>
-<p>And you can define <code>args</code> as <code>Args</code>, this service aslo works.</p>
-<h2 id="server">Server</h2>
-<p>After you define services, you should want to explore to users. You should start a TCP server or UDP server to listen.</p>
-<p>The server supports below approaches to start, serve and close:</p>
-<pre><code class="lang-go">    <span class="hljs-keyword">func</span> NewServer(options ...OptionFn) *Server
-    <span class="hljs-keyword">func</span> (s *Server) Close() error
-    <span class="hljs-keyword">func</span> (s *Server) RegisterOnShutdown(f <span class="hljs-keyword">func</span>())
-    <span class="hljs-keyword">func</span> (s *Server) Serve(network, address <span class="hljs-typename">string</span>) (err error)
-    <span class="hljs-keyword">func</span> (s *Server) ServeHTTP(w http.ResponseWriter, req *http.Request)
-</code></pre>
-<p>First you use <code>NewServer</code> to create a server instance with options. Second you can invokde <code>Serve</code> or <code>ServeHTTP</code> to serve.</p>
-<p>The server contains some fields (and unexported fields):</p>
-<pre><code class="lang-go"><span class="hljs-keyword">type</span> Server <span class="hljs-keyword">struct</span> {
-    Plugins PluginContainer
-    <span class="hljs-comment">// AuthFunc can be used to auth.</span>
-    AuthFunc <span class="hljs-keyword">func</span>(ctx context.Context, req *protocol.Message, token <span class="hljs-typename">string</span>) error
-    <span class="hljs-comment">// contains filtered or unexported fields</span>
-}
-</code></pre>
-<p><code>Plugins</code> caontains all plugins in this server. We will introduce it in later chapters.</p>
-<p><code>AuthFunc</code> is a authentication function which can check clients are authorized. It is also introduced later.</p>
-<p>rpcx provides three <code>OptionFn</code> to set options:</p>
-<pre><code class="lang-go">
-    <span class="hljs-keyword">func</span> WithReadTimeout(readTimeout time.Duration) OptionFn
-    <span class="hljs-keyword">func</span> WithTLSConfig(cfg *tls.Config) OptionFn
-    <span class="hljs-keyword">func</span> WithWriteTimeout(writeTimeout time.Duration) OptionFn
-</code></pre>
-<p>It can set readTimeout, writeTimeout and tls.Config.</p>
-<p><code>ServeHTTP</code> uses a HTTP connection to serve services. It hijacks the connnection to communicate with clients.</p>
-<p><code>Serve</code> uses TCP or UDP ptotocol to communicate with clients.</p>
-<p>rpcx supports the below <code>network</code>:</p>
-<ul>
-<li>tcp: recommended network</li>
-<li>http: hijack http connection</li>
-<li>unix: unix domain sockets</li>
-<li>reuseport: use <code>SO_REUSEPORT</code> socket option, only support Linux kernel 3.9+</li>
-<li>quic: support <a href="https://en.wikipedia.org/wiki/QUIC" target="_blank">quic protocol</a></li>
-<li>kcp: sopport <a href="https://github.com/skywind3000/kcp" target="_blank">kcp protocol</a></li>
-</ul>
-<p>There is a server example:</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
-
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;flag&quot;</span>
-
-    example <span class="hljs-string">&quot;github.com/rpcx-ecosystem/rpcx-examples3&quot;</span>
-    <span class="hljs-string">&quot;github.com/smallnest/rpcx/server&quot;</span>
-)
-
-<span class="hljs-keyword">var</span> (
-    addr = flag.String(<span class="hljs-string">&quot;addr&quot;</span>, <span class="hljs-string">&quot;localhost:8972&quot;</span>, <span class="hljs-string">&quot;server address&quot;</span>)
-)
-
 <span class="hljs-keyword">func</span> main() {
-    flag.Parse()
+    cc := &amp;codec.MsgpackCodec{}
 
-    s := server.NewServer()
-    <span class="hljs-comment">//s.RegisterName(&quot;Arith&quot;, new(example.Arith), &quot;&quot;)</span>
-    s.Register(<span class="hljs-built_in">new</span>(example.Arith), <span class="hljs-string">&quot;&quot;</span>)
-    s.Serve(<span class="hljs-string">&quot;tcp&quot;</span>, *addr)
+    <span class="hljs-comment">// request </span>
+    args := &amp;Args{
+        A: <span class="hljs-number">10</span>,
+        B: <span class="hljs-number">20</span>,
+    }
+    data, _ := cc.Encode(args)
+
+    req, err := http.NewRequest(<span class="hljs-string">&quot;POST&quot;</span>, <span class="hljs-string">&quot;http://127.0.0.1:9981/&quot;</span>, bytes.NewReader(data))
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatal(<span class="hljs-string">&quot;failed to create request: &quot;</span>, err)
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-comment">// set extra headers</span>
+    h := req.Header
+    h.Set(gateway.XMessageID, <span class="hljs-string">&quot;10000&quot;</span>)
+    h.Set(gateway.XMessageType, <span class="hljs-string">&quot;0&quot;</span>)
+    h.Set(gateway.XSerializeType, <span class="hljs-string">&quot;3&quot;</span>)
+    h.Set(gateway.XServicePath, <span class="hljs-string">&quot;Arith&quot;</span>)
+    h.Set(gateway.XServiceMethod, <span class="hljs-string">&quot;Mul&quot;</span>)
+
+    <span class="hljs-comment">// send to gateway</span>
+    res, err := http.DefaultClient.Do(req)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatal(<span class="hljs-string">&quot;failed to call: &quot;</span>, err)
+    }
+    <span class="hljs-keyword">defer</span> res.Body.Close()
+
+    <span class="hljs-comment">// handle http response</span>
+    replyData, err := ioutil.ReadAll(res.Body)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatal(<span class="hljs-string">&quot;failed to read response: &quot;</span>, err)
+    }
+
+    <span class="hljs-comment">// parse reply</span>
+    reply := &amp;Reply{}
+    err = cc.Decode(replyData, reply)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatal(<span class="hljs-string">&quot;failed to decode reply: &quot;</span>, err)
+    }
+
+    log.Printf(<span class="hljs-string">&quot;%d * %d = %d&quot;</span>, args.A, args.B, reply.C)
 }
 </code></pre>
 <footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:12:02
+2018-02-12 15:33:12
 </span></footer>
                     
                     </section>
@@ -691,10 +701,10 @@ func (s *Server) RegisterName(name string, rcvr interface{}, metadata string) er
         </div>
 
         
-        <a href="../part1/quickstart.html" class="navigation navigation-prev " aria-label="Previous page: QuickStart"><i class="fa fa-angle-left"></i></a>
+        <a href="../part5/protocol.html" class="navigation navigation-prev " aria-label="Previous page: protocol"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../part1/client.html" class="navigation navigation-next " aria-label="Next page: Client"><i class="fa fa-angle-right"></i></a>
+        <a href="../part6/http_invoke.html" class="navigation navigation-next " aria-label="Next page: HTTP Invoke"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
