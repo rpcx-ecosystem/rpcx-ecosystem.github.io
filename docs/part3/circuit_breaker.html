@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Metrics | rpcx Programming</title>
+        <title>Circuit Breaker | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,10 @@
         
     
     
-    <link rel="next" href="../part4/rate-limiting.html" />
+    <link rel="next" href="../part4/metrics.html" />
     
     
-    <link rel="prev" href="../part3/circuit_breaker.html" />
+    <link rel="prev" href="../part3/state.html" />
     
 
         
@@ -73,9 +73,9 @@
         
         
     <div class="book"
-        data-level="18"
-        data-chapter-title="Metrics"
-        data-filepath="part4/metrics.md"
+        data-level="17"
+        data-chapter-title="Circuit Breaker"
+        data-filepath="part3/circuit_breaker.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 17:28:37 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -530,7 +530,7 @@
             
         </li>
     
-        <li class="chapter " data-level="17" data-path="part3/circuit_breaker.html">
+        <li class="chapter active" data-level="17" data-path="part3/circuit_breaker.html">
             
                 
                     <a href="../part3/circuit_breaker.html">
@@ -545,7 +545,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="18" data-path="part4/metrics.html">
+        <li class="chapter " data-level="18" data-path="part4/metrics.html">
             
                 
                     <a href="../part4/metrics.html">
@@ -743,19 +743,18 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="metrics-plugin">Metrics plugin</h1>
-<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/metrics" target="_blank">metrics</a></p>
-<p>Metrics plugin uses <a href="github.com/rcrowley/go-metrics">go-metrics</a> to calculate metrics of the server.</p>
-<p>It contains some metrics:</p>
-<ol>
-<li>serviceCounter</li>
-<li>clientMeter</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Read_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Write_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_CallTime&quot;</li>
-</ol>
+                        <h1 id="circuit-breaker">Circuit Breaker</h1>
+<p>Circuit Breaker is use to prevent a network or service failure from cascading to other services, see the post: <a href="http://microservices.io/patterns/reliability/circuit-breaker.html" target="_blank">Pattern: Circuit Breaker</a>.</p>
+<p>A service client should invoke a remote service via a proxy that functions in a similar fashion to an electrical circuit breaker. When the number of consecutive failures crosses a threshold, the circuit breaker trips, and for the duration of a timeout period all attempts to invoke the remote service will fail immediately. After the timeout expires the circuit breaker allows a limited number of test requests to pass through. If those requests succeed the circuit breaker resumes normal operation. Otherwise, if there is a failure the timeout period begins again.</p>
+<p>Rpcx defines a <code>Breaker</code> interface and you can implement your customized circuit creaker.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> Breaker <span class="hljs-keyword">interface</span> {
+    Call(<span class="hljs-keyword">func</span>() error, time.Duration) error
+}
+</code></pre>
+<p>Rpcx implements a simple <code>ConsecCircuitBreaker</code> that is a window sliding CircuitBreaker with failure threshold.</p>
+<p>You can set your CircuitBreaker instance to <code>Option.Breaker</code>. </p>
 <footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:29:44
+2018-02-12 17:08:14
 </span></footer>
                     
                     </section>
@@ -766,10 +765,10 @@
         </div>
 
         
-        <a href="../part3/circuit_breaker.html" class="navigation navigation-prev " aria-label="Previous page: Circuit Breaker"><i class="fa fa-angle-left"></i></a>
+        <a href="../part3/state.html" class="navigation navigation-prev " aria-label="Previous page: State"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../part4/rate-limiting.html" class="navigation navigation-next " aria-label="Next page: Rate Limiting"><i class="fa fa-angle-right"></i></a>
+        <a href="../part4/metrics.html" class="navigation navigation-next " aria-label="Next page: Metrics"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

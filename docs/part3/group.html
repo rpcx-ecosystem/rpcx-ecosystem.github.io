@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Metrics | rpcx Programming</title>
+        <title>Group | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,10 @@
         
     
     
-    <link rel="next" href="../part4/rate-limiting.html" />
+    <link rel="next" href="../part3/state.html" />
     
     
-    <link rel="prev" href="../part3/circuit_breaker.html" />
+    <link rel="prev" href="../part3/heartbeat.html" />
     
 
         
@@ -73,9 +73,9 @@
         
         
     <div class="book"
-        data-level="18"
-        data-chapter-title="Metrics"
-        data-filepath="part4/metrics.md"
+        data-level="15"
+        data-chapter-title="Group"
+        data-filepath="part3/group.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 17:28:37 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -500,7 +500,7 @@
             
         </li>
     
-        <li class="chapter " data-level="15" data-path="part3/group.html">
+        <li class="chapter active" data-level="15" data-path="part3/group.html">
             
                 
                     <a href="../part3/group.html">
@@ -545,7 +545,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="18" data-path="part4/metrics.html">
+        <li class="chapter " data-level="18" data-path="part4/metrics.html">
             
                 
                     <a href="../part4/metrics.html">
@@ -743,19 +743,57 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="metrics-plugin">Metrics plugin</h1>
-<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/metrics" target="_blank">metrics</a></p>
-<p>Metrics plugin uses <a href="github.com/rcrowley/go-metrics">go-metrics</a> to calculate metrics of the server.</p>
-<p>It contains some metrics:</p>
-<ol>
-<li>serviceCounter</li>
-<li>clientMeter</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Read_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Write_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_CallTime&quot;</li>
-</ol>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:29:44
+                        <h1 id="group">Group</h1>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/group" target="_blank">group</a></p>
+<p>When you register a service, maybe you have noticed there is third parameter and we set it as empty string at most examples. Actually you add some meta for those services.</p>
+<p>You can manage rpcx service via <a href="https://github.com/smallnest/rpcx-ui" target="_blank">rpcx-ui</a>).</p>
+<p><code>group</code> is a meta data. If you set <code>group</code> metadata for some services, only clients in this <code>group</code> can access those services.</p>
+<p>```go server.go</p>
+<p>func main() {
+    flag.Parse()</p>
+<pre><code>go createServer1(*addr1, &quot;&quot;)
+go createServer2(*addr2, &quot;group=test&quot;)
+
+select {}
+</code></pre><p>}</p>
+<p>func createServer1(addr, meta string) {
+    s := server.NewServer()
+    s.RegisterName(&quot;Arith&quot;, new(example.Arith), meta)
+    s.Serve(&quot;tcp&quot;, addr)
+}</p>
+<p>func createServer2(addr, meta string) {
+    s := server.NewServer()
+    s.RegisterName(&quot;Arith&quot;, new(Arith), meta)
+    s.Serve(&quot;tcp&quot;, addr)
+}</p>
+<pre><code>
+Discovery can find the group. Client can use `option.Group` to set group.
+
+If you have not set `option.Group`, clients can access any services whether services set group or not.
+
+```go client.go
+    option := client.DefaultOption
+    option.Group = &quot;test&quot;
+    xclient := client.NewXClient(&quot;Arith&quot;, client.Failover, client.RoundRobin, d, option)
+    defer xclient.Close()
+
+    args := &amp;example.Args{
+        A: 10,
+        B: 20,
+    }
+
+    for {
+        reply := &amp;example.Reply{}
+        err := xclient.Call(context.Background(), &quot;Mul&quot;, args, reply)
+        if err != nil {
+            log.Fatalf(&quot;failed to call: %v&quot;, err)
+        }
+
+        log.Printf(&quot;%d * %d = %d&quot;, args.A, args.B, reply.C)
+        time.Sleep(1e9)
+    }
+</code></pre><footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
+2018-02-12 17:01:49
 </span></footer>
                     
                     </section>
@@ -766,10 +804,10 @@
         </div>
 
         
-        <a href="../part3/circuit_breaker.html" class="navigation navigation-prev " aria-label="Previous page: Circuit Breaker"><i class="fa fa-angle-left"></i></a>
+        <a href="../part3/heartbeat.html" class="navigation navigation-prev " aria-label="Previous page: Heartbeat"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../part4/rate-limiting.html" class="navigation navigation-next " aria-label="Next page: Rate Limiting"><i class="fa fa-angle-right"></i></a>
+        <a href="../part3/state.html" class="navigation navigation-next " aria-label="Next page: State"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

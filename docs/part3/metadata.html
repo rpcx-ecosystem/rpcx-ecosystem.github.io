@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Metrics | rpcx Programming</title>
+        <title>Metadata | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,10 @@
         
     
     
-    <link rel="next" href="../part4/rate-limiting.html" />
+    <link rel="next" href="../part3/heartbeat.html" />
     
     
-    <link rel="prev" href="../part3/circuit_breaker.html" />
+    <link rel="prev" href="../part3/timeout.html" />
     
 
         
@@ -73,9 +73,9 @@
         
         
     <div class="book"
-        data-level="18"
-        data-chapter-title="Metrics"
-        data-filepath="part4/metrics.md"
+        data-level="13"
+        data-chapter-title="Metadata"
+        data-filepath="part3/metadata.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 17:28:37 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -470,7 +470,7 @@
             
         </li>
     
-        <li class="chapter " data-level="13" data-path="part3/metadata.html">
+        <li class="chapter active" data-level="13" data-path="part3/metadata.html">
             
                 
                     <a href="../part3/metadata.html">
@@ -545,7 +545,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="18" data-path="part4/metrics.html">
+        <li class="chapter " data-level="18" data-path="part4/metrics.html">
             
                 
                     <a href="../part4/metrics.html">
@@ -743,19 +743,28 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="metrics-plugin">Metrics plugin</h1>
-<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/metrics" target="_blank">metrics</a></p>
-<p>Metrics plugin uses <a href="github.com/rcrowley/go-metrics">go-metrics</a> to calculate metrics of the server.</p>
-<p>It contains some metrics:</p>
-<ol>
-<li>serviceCounter</li>
-<li>clientMeter</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Read_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Write_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_CallTime&quot;</li>
-</ol>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:29:44
+                        <h1 id="metadata">Metadata</h1>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/metadata" target="_blank">metadata</a></p>
+<p>Clients and servers can communicate with extra data.</p>
+<p>Metadata is a key-vaue pair and key/value must be string.</p>
+<h2 id="client">Client</h2>
+<p>If you want to send metadata, you <strong>must</strong> set <code>share.ReqMetaDataKey</code> in context.
+If you want to receive metadata, you <strong>must</strong> set <code>share.ResMetaDataKey</code> in context.</p>
+<p>```go client.go
+    reply := &amp;example.Reply{}
+    ctx := context.WithValue(context.Background(), share.ReqMetaDataKey, map[string]string{&quot;aaa&quot;: &quot;from client&quot;})
+    ctx = context.WithValue(ctx, share.ResMetaDataKey, make(map[string]string))
+    err := xclient.Call(ctx, &quot;Mul&quot;, args, reply)</p>
+<pre><code>
+## Server
+
+Server can get `share.ReqMetaDataKey` and `share.ResMetaDataKey` from context:
+
+```go server.go
+    reqMeta := ctx.Value(share.ReqMetaDataKey).(map[string]string)
+    resMeta := ctx.Value(share.ResMetaDataKey).(map[string]string)
+</code></pre><footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
+2018-02-12 16:38:42
 </span></footer>
                     
                     </section>
@@ -766,10 +775,10 @@
         </div>
 
         
-        <a href="../part3/circuit_breaker.html" class="navigation navigation-prev " aria-label="Previous page: Circuit Breaker"><i class="fa fa-angle-left"></i></a>
+        <a href="../part3/timeout.html" class="navigation navigation-prev " aria-label="Previous page: Timeout"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../part4/rate-limiting.html" class="navigation navigation-next " aria-label="Next page: Rate Limiting"><i class="fa fa-angle-right"></i></a>
+        <a href="../part3/heartbeat.html" class="navigation navigation-next " aria-label="Next page: Heartbeat"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Metrics | rpcx Programming</title>
+        <title>Transport | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,10 @@
         
     
     
-    <link rel="next" href="../part4/rate-limiting.html" />
+    <link rel="next" href="../part2/registry.html" />
     
     
-    <link rel="prev" href="../part3/circuit_breaker.html" />
+    <link rel="prev" href="../part1/client.html" />
     
 
         
@@ -73,9 +73,9 @@
         
         
     <div class="book"
-        data-level="18"
-        data-chapter-title="Metrics"
-        data-filepath="part4/metrics.md"
+        data-level="4"
+        data-chapter-title="Transport"
+        data-filepath="part1/transport.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 17:28:37 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -158,7 +158,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4" data-path="part1/transport.html">
+        <li class="chapter active" data-level="4" data-path="part1/transport.html">
             
                 
                     <a href="../part1/transport.html">
@@ -545,7 +545,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="18" data-path="part4/metrics.html">
+        <li class="chapter " data-level="18" data-path="part4/metrics.html">
             
                 
                     <a href="../part4/metrics.html">
@@ -743,19 +743,98 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="metrics-plugin">Metrics plugin</h1>
-<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/metrics" target="_blank">metrics</a></p>
-<p>Metrics plugin uses <a href="github.com/rcrowley/go-metrics">go-metrics</a> to calculate metrics of the server.</p>
-<p>It contains some metrics:</p>
-<ol>
-<li>serviceCounter</li>
-<li>clientMeter</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Read_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Write_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_CallTime&quot;</li>
-</ol>
+                        <h1 id="transport">Transport</h1>
+<p>rpcx can commnunicate via TCP, HTTP Connect, UnixDomain, QUIC and KCP. You can also access rpcx by a http client via Gateway or HTTP_Invoke.</p>
+<h2 id="tcp">TCP</h2>
+<p>It is the most used transport. High performance and easy. You can use TLS for TCP security.</p>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/101basic" target="_blank">101basic</a></p>
+<p>Servers use <code>tcp</code> as network name and they registers services as<code>serviceName/tcp@ipaddress:port</code> in the registry.
+```go server.go
+s.Serve(&quot;tcp&quot;, *addr)</p>
+<pre><code>
+Client can access services by:
+```go
+d := client.NewPeer2PeerDiscovery(&quot;tcp@&quot;+*addr, &quot;&quot;)
+xclient := client.NewXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+defer xclient.Close()
+</code></pre><h2 id="http-connect">HTTP Connect</h2>
+<p>You can send <code>HTTP CONNECT</code> method to rpcx servers. Rpcx servers hijacks this connection and use it as a TCP connection.
+Notice clients and servers don&apos;t use http requests/responses to communicate and they still use the binary protocol based on this connection.</p>
+<p>The network name is <code>http</code> and the registered format is <code>serviceName/http@ipaddress:port</code></p>
+<p>It is not recommended and TCP is the first choice.</p>
+<p>If you want to use http requests/responses to access, you should use gateway or http_invoke.</p>
+<h2 id="unixdomain">Unixdomain</h2>
+<p>the network name is <code>unix</code>.</p>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/unixdomain" target="_blank">unix</a></p>
+<h2 id="quic">QUIC</h2>
+<p>From <a href="https://en.wikipedia.org/wiki/QUIC" target="_blank">wikipedia</a></p>
+<blockquote>
+<p>QUIC (Quick UDP Internet Connections, pronounced quick) is an experimental transport layer network protocol designed by Jim Roskind at Google, initially implemented in 2012, and announced publicly in 2013 as experimentation broadened. QUIC supports a set of multiplexed connections between two endpoints over User Datagram Protocol (UDP), and was designed to provide security protection equivalent to TLS/SSL, along with reduced connection and transport latency, and bandwidth estimation in each direction to avoid congestion. QUIC&apos;s main goal is to improve perceived performance of connection-oriented web applications that are currently using TCP. It also moves control of the congestion avoidance algorithms into the application space at both endpoints, rather than the kernel space, which it is claimed will allow these algorithms to improve more rapidly.</p>
+<p>In June 2015, an Internet Draft of a specification for QUIC was submitted to the IETF for standardization. A QUIC working group was established in 2016. The QUIC working group foresees multipath support and optional forward error correction (FEC) as the next step. The working group also focuses on network management issues that QUIC may introduce, aiming to produce an applicability and manageability statement in parallel to the actual protocol work. Internet statistics in 2017 suggest that QUIC now accounts for more than 5% of Internet traffic.</p>
+</blockquote>
+<p>the network name is <code>quic</code>.</p>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/quic" target="_blank">quic</a></p>
+<h2 id="kcp">KCP</h2>
+<p><a href="https://github.com/skywind3000/kcp" target="_blank">KCP</a> is a fast and reliable ARQ protocol.</p>
+<p>the network is <code>kcp</code>.</p>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/kcp" target="_blank">kcp</a></p>
+<h2 id="reuseport">reuseport</h2>
+<p>the network name is <code>reuseport</code>.</p>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/reuseport" target="_blank">reuseport</a></p>
+<p>It uses <code>tcp</code> protocol and set <a href="https://lwn.net/Articles/542629/" target="_blank">SO_REUSEPORT</a> socket option for linux and unix servers.</p>
+<h2 id="tls">TLS</h2>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/tls" target="_blank">TLS</a></p>
+<p>You can set TLS in server:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    flag.Parse()
+
+    cert, err := tls.LoadX509KeyPair(<span class="hljs-string">&quot;server.pem&quot;</span>, <span class="hljs-string">&quot;server.key&quot;</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Print(err)
+        <span class="hljs-keyword">return</span>
+    }
+
+    config := &amp;tls.Config{Certificates: []tls.Certificate{cert}}
+
+    s := server.NewServer(server.WithTLSConfig(config))
+    s.RegisterName(<span class="hljs-string">&quot;Arith&quot;</span>, <span class="hljs-built_in">new</span>(example.Arith), <span class="hljs-string">&quot;&quot;</span>)
+    s.Serve(<span class="hljs-string">&quot;tcp&quot;</span>, *addr)
+}
+</code></pre>
+<p>And set TLS in client:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    flag.Parse()
+
+    d := client.NewPeer2PeerDiscovery(<span class="hljs-string">&quot;tcp@&quot;</span>+*addr, <span class="hljs-string">&quot;&quot;</span>)
+
+    option := client.DefaultOption
+
+    conf := &amp;tls.Config{
+        InsecureSkipVerify: <span class="hljs-constant">true</span>,
+    }
+
+    option.TLSConfig = conf
+
+    xclient := client.NewXClient(<span class="hljs-string">&quot;Arith&quot;</span>, client.Failtry, client.RandomSelect, d, option)
+    <span class="hljs-keyword">defer</span> xclient.Close()
+
+    args := &amp;example.Args{
+        A: <span class="hljs-number">10</span>,
+        B: <span class="hljs-number">20</span>,
+    }
+
+    reply := &amp;example.Reply{}
+    err := xclient.Call(context.Background(), <span class="hljs-string">&quot;Mul&quot;</span>, args, reply)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, err)
+    }
+
+    log.Printf(<span class="hljs-string">&quot;%d * %d = %d&quot;</span>, args.A, args.B, reply.C)
+
+}
+</code></pre>
 <footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:29:44
+2018-02-12 17:10:16
 </span></footer>
                     
                     </section>
@@ -766,10 +845,10 @@
         </div>
 
         
-        <a href="../part3/circuit_breaker.html" class="navigation navigation-prev " aria-label="Previous page: Circuit Breaker"><i class="fa fa-angle-left"></i></a>
+        <a href="../part1/client.html" class="navigation navigation-prev " aria-label="Previous page: Client"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../part4/rate-limiting.html" class="navigation navigation-next " aria-label="Next page: Rate Limiting"><i class="fa fa-angle-right"></i></a>
+        <a href="../part2/registry.html" class="navigation navigation-next " aria-label="Next page: Registry"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Metrics | rpcx Programming</title>
+        <title>Bidirectional | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,8 @@
         
     
     
-    <link rel="next" href="../part4/rate-limiting.html" />
     
-    
-    <link rel="prev" href="../part3/circuit_breaker.html" />
+    <link rel="prev" href="../part6/http_invoke.html" />
     
 
         
@@ -73,9 +71,9 @@
         
         
     <div class="book"
-        data-level="18"
-        data-chapter-title="Metrics"
-        data-filepath="part4/metrics.md"
+        data-level="28"
+        data-chapter-title="Bidirectional"
+        data-filepath="part6/bidirectional.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 17:28:37 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -545,7 +543,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="18" data-path="part4/metrics.html">
+        <li class="chapter " data-level="18" data-path="part4/metrics.html">
             
                 
                     <a href="../part4/metrics.html">
@@ -695,7 +693,7 @@
             
         </li>
     
-        <li class="chapter " data-level="28" data-path="part6/bidirectional.html">
+        <li class="chapter active" data-level="28" data-path="part6/bidirectional.html">
             
                 
                     <a href="../part6/bidirectional.html">
@@ -743,19 +741,78 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="metrics-plugin">Metrics plugin</h1>
-<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/metrics" target="_blank">metrics</a></p>
-<p>Metrics plugin uses <a href="github.com/rcrowley/go-metrics">go-metrics</a> to calculate metrics of the server.</p>
-<p>It contains some metrics:</p>
-<ol>
-<li>serviceCounter</li>
-<li>clientMeter</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Read_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Write_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_CallTime&quot;</li>
-</ol>
-<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:29:44
+                        <h1 id="bidirectional-commnunication">Bidirectional commnunication</h1>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/bidirectional" target="_blank">bidirectional</a></p>
+<p>In normal case, clients send requests to services and services returns reponses to clients. It is the <code>request-response</code> rpc model.</p>
+<p>But for some users, they want services can send commands or notifications to clients initiatively. It can be implemented by installing a service on the prior client and a client on the prior service but it is redundant and complicated.</p>
+<p>Rpcx implements a simple notification model.</p>
+<p>You should cache the connection and business user ID in order that yu know you want to send notifications to which client.</p>
+<h2 id="server">Server</h2>
+<p>Server can use <code>SendMessage</code> to send messages to clients and data is <code>[]byte</code>. You should use <code>servicePath</code> and <code>serviceMethod</code> to indicate which notification the data is.</p>
+<p>You can get the <code>net.Conn</code> by <code>ctx.Value(server.RemoteConnContextKey)</code> in service.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (s *Server) SendMessage(conn net.Conn, servicePath, serviceMethod <span class="hljs-typename">string</span>, metadata <span class="hljs-keyword">map</span>[<span class="hljs-typename">string</span>]<span class="hljs-typename">string</span>, data []<span class="hljs-typename">byte</span>) error
+</code></pre>
+<p>```go server.go
+func main() {
+    flag.Parse()</p>
+<pre><code>ln, _ := net.Listen(&quot;tcp&quot;, &quot;:9981&quot;)
+go http.Serve(ln, nil)
+
+s := server.NewServer()
+//s.RegisterName(&quot;Arith&quot;, new(example.Arith), &quot;&quot;)
+s.Register(new(Arith), &quot;&quot;)
+go s.Serve(&quot;tcp&quot;, *addr)
+
+for !connected {
+    time.Sleep(time.Second)
+}
+
+fmt.Printf(&quot;start to send messages to %s\n&quot;, clientConn.RemoteAddr().String())
+for {
+    if clientConn != nil {
+        err := s.SendMessage(clientConn, &quot;test_service_path&quot;, &quot;test_service_method&quot;, nil, []byte(&quot;abcde&quot;))
+        if err != nil {
+            fmt.Printf(&quot;failed to send messsage to %s: %v\n&quot;, clientConn.RemoteAddr().String(), err)
+            clientConn = nil
+        }
+    }
+    time.Sleep(time.Second)
+}
+</code></pre><p>}</p>
+<pre><code>
+## Client
+
+You must use `NewBidirectionalXClient` to create XClient by passing a channel. Then yuou can range the channel to get the message.
+
+```go client.go
+func main() {
+    flag.Parse()
+
+    ch := make(chan *protocol.Message)
+
+    d := client.NewPeer2PeerDiscovery(&quot;tcp@&quot;+*addr, &quot;&quot;)
+    xclient := client.NewBidirectionalXClient(&quot;Arith&quot;, client.Failtry, client.RandomSelect, d, client.DefaultOption, ch)
+    defer xclient.Close()
+
+    args := &amp;example.Args{
+        A: 10,
+        B: 20,
+    }
+
+    reply := &amp;example.Reply{}
+    err := xclient.Call(context.Background(), &quot;Mul&quot;, args, reply)
+    if err != nil {
+        log.Fatalf(&quot;failed to call: %v&quot;, err)
+    }
+
+    log.Printf(&quot;%d * %d = %d&quot;, args.A, args.B, reply.C)
+
+    for msg := range ch {
+        fmt.Printf(&quot;receive msg from server: %s\n&quot;, msg.Payload)
+    }
+}
+</code></pre><footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
+2018-02-12 17:27:29
 </span></footer>
                     
                     </section>
@@ -766,10 +823,8 @@
         </div>
 
         
-        <a href="../part3/circuit_breaker.html" class="navigation navigation-prev " aria-label="Previous page: Circuit Breaker"><i class="fa fa-angle-left"></i></a>
+        <a href="../part6/http_invoke.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: HTTP Invoke"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../part4/rate-limiting.html" class="navigation navigation-next " aria-label="Next page: Rate Limiting"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Metrics | rpcx Programming</title>
+        <title>Timeout | rpcx Programming</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -61,10 +61,10 @@
         
     
     
-    <link rel="next" href="../part4/rate-limiting.html" />
+    <link rel="next" href="../part3/metadata.html" />
     
     
-    <link rel="prev" href="../part3/circuit_breaker.html" />
+    <link rel="prev" href="../part3/selector.html" />
     
 
         
@@ -73,9 +73,9 @@
         
         
     <div class="book"
-        data-level="18"
-        data-chapter-title="Metrics"
-        data-filepath="part4/metrics.md"
+        data-level="12"
+        data-chapter-title="Timeout"
+        data-filepath="part3/timeout.md"
         data-basepath=".."
         data-revision="Mon Feb 12 2018 17:28:37 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -455,7 +455,7 @@
             
         </li>
     
-        <li class="chapter " data-level="12" data-path="part3/timeout.html">
+        <li class="chapter active" data-level="12" data-path="part3/timeout.html">
             
                 
                     <a href="../part3/timeout.html">
@@ -545,7 +545,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="18" data-path="part4/metrics.html">
+        <li class="chapter " data-level="18" data-path="part4/metrics.html">
             
                 
                     <a href="../part4/metrics.html">
@@ -743,19 +743,49 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="metrics-plugin">Metrics plugin</h1>
-<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/metrics" target="_blank">metrics</a></p>
-<p>Metrics plugin uses <a href="github.com/rcrowley/go-metrics">go-metrics</a> to calculate metrics of the server.</p>
-<p>It contains some metrics:</p>
-<ol>
-<li>serviceCounter</li>
-<li>clientMeter</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Read_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_Write_Qps&quot;</li>
-<li>&quot;service_&quot;+servicePath+&quot;.&quot;+serviceMethod+&quot;_CallTime&quot;</li>
-</ol>
+                        <h1 id="timeout">Timeout</h1>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/timeout" target="_blank">timeout</a></p>
+<p>The timeout pattern prevents remote procedure calls from waiting indefinitely for a response. A timeout specifies how long the RPC has to return. If there is no response by the timeout, the RPC invokes a fallback mechanism, whether it&#x2019;s retrying the request, throwing an exception, or something else. This pattern is perhaps the most basic, fundamental resilience pattern used in RPCs.</p>
+<h2 id="server">Server</h2>
+<p>You can use <code>OptionFn</code> to set servers&apos; <code>readTimeout</code> and <code>writeTimeout</code>.</p>
+<p>```go server struct
+type Server struct {
+    &#x2026;&#x2026;
+    readTimeout  time.Duration
+    writeTimeout time.Duration
+    &#x2026;&#x2026;
+}</p>
+<pre><code>
+`OptionFn` methods are:
+
+```go
+func WithReadTimeout(readTimeout time.Duration) OptionFn
+func WithWriteTimeout(writeTimeout time.Duration) OptionFn
+</code></pre><h2 id="client">Client</h2>
+<p>There are two methods to set timeout for client.</p>
+<p>One is set read/write deadline for connections and another is using <code>context.Context</code>.</p>
+<h3 id="readwrite-deadline">read/write deadline</h3>
+<p>Client&apos;s Option has three options to set timeout:</p>
+<pre><code class="lang-go">
+<span class="hljs-keyword">type</span> Option <span class="hljs-keyword">struct</span> {
+    &#x2026;&#x2026;
+    <span class="hljs-comment">//ConnectTimeout sets timeout for dialing</span>
+    ConnectTimeout time.Duration
+    <span class="hljs-comment">// ReadTimeout sets readdeadline for underlying net.Conns</span>
+    ReadTimeout time.Duration
+    <span class="hljs-comment">// WriteTimeout sets writedeadline for underlying net.Conns</span>
+    WriteTimeout time.Duration
+    &#x2026;&#x2026;
+}
+</code></pre>
+<p><code>DefaultOption</code> sets the ConnectTimeout to 10 seconds but has not set ReadTimeout and WriteTimeout. If the timeout has not been set, there is no timeout for accessing.</p>
+<h3 id="contextcontext">context.Context</h3>
+<p><code>context.Context</code> since Go 1.7 can be used to control timeout.</p>
+<p>You need to use <code>context.WithTimeout</code> to wrap a go context to invoke client.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
+</code></pre>
 <footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
-2018-02-12 15:29:44
+2018-02-12 16:29:12
 </span></footer>
                     
                     </section>
@@ -766,10 +796,10 @@
         </div>
 
         
-        <a href="../part3/circuit_breaker.html" class="navigation navigation-prev " aria-label="Previous page: Circuit Breaker"><i class="fa fa-angle-left"></i></a>
+        <a href="../part3/selector.html" class="navigation navigation-prev " aria-label="Previous page: Selector"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../part4/rate-limiting.html" class="navigation navigation-next " aria-label="Next page: Rate Limiting"><i class="fa fa-angle-right"></i></a>
+        <a href="../part3/metadata.html" class="navigation navigation-next " aria-label="Next page: Metadata"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
