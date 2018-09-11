@@ -1,0 +1,85 @@
+.fl-lt{float:left}
+.fl-rt{float:right}
+li.borderless{border:0 none}
+li.opacity{background:rgba(255,255,255,0.0)}
+
+.clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0}
+.clearfix:before,.clearfix:after{content:'\0020';display:block;overflow:hidden;visibility:hidden;width:0;height:0}
+.clearfix:after{clear:both}
+
+.figure{margin:0}
+img{max-width:100%}
+a,a:hover,a:active{outline:0!important}
+.link{background:#cf1717;color:#fff!important;font-size:16px;font-weight:400;font-family:Montserrat,sans-serif;display:inline-block;border-radius:3px;text-transform:uppercase;line-height:25px;margin-bottom:20px;transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-webkit-transition:all .3s ease-in-out;padding:15px 35px}
+.link:hover{text-decoration:none;color:#cf1717!important;background:#fff}
+.link:active,.link:focus{background:#cf1717;text-decoration:none;color:#fff!important}
+
+@font-face{font-family:FontAwesome;src:url(../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0) format(embedded-opentype),url(../fonts/fontawesome-webfont.woff?v=4.1.0) format(woff),url(../fonts/fontawesome-webfont.ttf?v=4.1.0) format(truetype),url(../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular) format(svg);font-weight:400;font-style:normal}
+
+body{background:#fff;font-family:'Open Sans',sans-serif;font-size:14px;font-weight:400;color:#888;margin:0}
+h2{font-size:34px;color:#222;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:-1px;text-align:center;text-transform:uppercase;margin:0 0 15px}
+h3{font-family:Montserrat,sans-serif;color:#222;font-size:16px;text-transform:uppercase;font-weight:400;margin:0 0 5px}
+h6{font-size:16px;color:#888;font-family:'Open Sans',sans-serif;font-weight:400;text-align:center;margin:0 0 60px}
+p{line-height:24px;margin:0}
+
+.header{text-align:center;background:url(../img/pw_maze_black_2X.png) left top repeat;padding:120px 0}
+.logo{width:130px;margin:0 auto 35px}
+.header h1{font-family:Montserrat,sans-serif;font-size:50px;font-weight:400;letter-spacing:-1px;color:#fff;margin:0 0 22px}
+.rpcx-one-word{margin:35px 0 55px;padding:0}
+.rpcx-one-word li{display:inline-block;font-family:Montserrat,sans-serif;font-size:14px;color:#bcbcbc;font-weight:400;margin:0 5px 0 0;padding:0 0 0 15px}
+.rpcx-one-word li:first-child{background:none}
+h1.welcome-one-word{font-family:Audiowide,sans-serif!important}
+.start-button{padding-left:0}
+
+
+.main-nav-outer{border-bottom:1px solid #ddd;box-shadow:0 4px 5px -3px #ececec;position:relative;background:#fff;padding:0}
+.main-nav{text-align:center;list-style:none;margin:10px 0 0;padding:0}
+.main-nav li{display:inline;margin:0 1px}
+.main-nav li a{display:inline-block;color:#222;text-transform:uppercase;font-family:Montserrat,sans-serif;text-decoration:none;line-height:20px;transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-webkit-transition:all .3s ease-in-out;margin:17px 32px}
+.main-nav li a:hover{text-decoration:none;color:#cf1717}
+.res-nav_click{line-height:38px;font-family:FontAwesome;font-size:38px;text-decoration:none!important;color:#777;font-style:normal;display:none;width:42px;height:27px;transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-webkit-transition:all .3s ease-in-out;margin:20px auto}
+.res-nav_click:hover,.res-nav_click:active,.res-nav_click:focus{color:#cf1717!important}
+.small-logo{padding:0 32px}
+
+.main-section{padding:90px 0 110px}
+.main-section#features{background:url(../img/bg-map.png) left 190px no-repeat}
+.feature-list{font-size:14px;margin-bottom:40px;padding:0}
+.feature-list-col1{float:left;width:60px}
+.feature-list-col1 i{font-style:normal;font-size:38px;display:block;color:#222;font-family:FontAwesome;line-height:38px}
+.slide-control{opacity:0.3;color:#fff;font-size:80px;left:30px;margin-top:-70px;position:absolute;top:50%}
+.slide-control.right{left:auto;right:30px}
+
+.benchmark-intro{font-size:14px}
+.benchmark-intro h2{text-align:left}
+.benchmark-box{margin-bottom:25px;font-size:14px;padding:0}
+.benchmark-box h3{margin-bottom:5px}
+.benchmark-box p{line-height:22px}
+.featured-work p.padding-b{padding-bottom:35px}
+.benchmark-box-col1{width:60px;float:left}
+.benchmark-box-col1 i{display:block;line-height:38px;font-family:FontAwesome;font-size:38px;color:#777;font-style:normal}
+.benchmark-box-col2 i{padding-left: 20px;}
+.more{display:inline-block;color:#cf1717;font-size:16px;text-transform:uppercase;font-family:Montserrat,sans-serif;font-weight:400;line-height:24px;transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-webkit-transition:all .3s ease-in-out;padding:0 5px 0 0}
+a.more{padding-right:18px;margin-top:20px;}
+.more:hover,.more:focus{text-decoration:none;color:#111}
+
+
+.footer{background:url(../img/pw_maze_black_2X.png) left top repeat;padding:35px 0}
+.footer-logo{width:76px;margin:15px auto 35px}
+.copyright{color:#ccc;font-size:14px;display:block;text-align:center}
+.copyright a{color:#cf1717;font-weight:600;text-decoration:none;transition:all .3s ease-in-out;-moz-transition:all .3s ease-in-out;-webkit-transition:all .3s ease-in-out}
+
+
+.start-button li a,.copyright a:hover{color:#fff}
+.feature-list-col2,.benchmark-box-col2{overflow:hidden}
+.main-section.benchmark,.benchmark-env{background:#f9f9f9}
+
+.delay-02s{animation-delay:.2s;-webkit-animation-delay:.2s}
+.delay-03s{animation-delay:.3s;-webkit-animation-delay:.3s}
+.delay-04s{animation-delay:.4s;-webkit-animation-delay:.4s}
+.delay-05s{animation-delay:.5s;-webkit-animation-delay:.5s}
+.delay-06s{animation-delay:.6s;-webkit-animation-delay:.6s}
+.delay-07s{animation-delay:.7s;-webkit-animation-delay:.7s}
+.delay-08s{animation-delay:.8s;-webkit-animation-delay:.8s}
+.delay-09s{animation-delay:.9s;-webkit-animation-delay:.9s}
+.delay-1s{animation-delay:1s;-webkit-animation-delay:1s}
+.delay-12s{animation-delay:1.2s;-webkit-animation-delay:1.2s}

@@ -1,0 +1,1008 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Client | rpcx Programming</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="smallnest &lt;smallnest@gmail.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-multipart/multipart.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-page-footer-ex/style/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-timeline/timeline.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-disqus/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../part1/transport.html" />
+    
+    
+    <link rel="prev" href="../part1/server.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3"
+        data-chapter-title="Client"
+        data-filepath="part1/client.md"
+        data-basepath=".."
+        data-revision="Mon Feb 12 2018 17:53:13 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="http://rpcx.site/" target="blank" class="custom-link">rpcx官方站点</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part1/quickstart.html">
+            
+                
+                    <a href="../part1/quickstart.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        QuickStart
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part1/server.html">
+            
+                
+                    <a href="../part1/server.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Server
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3" data-path="part1/client.html">
+            
+                
+                    <a href="../part1/client.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Client
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="part1/transport.html">
+            
+                
+                    <a href="../part1/transport.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Transport
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="part1/transport.html">
+            
+            <span><b>4.1.</b> TCP</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="part1/transport.html">
+            
+            <span><b>4.2.</b> HTTP</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="part1/transport.html">
+            
+            <span><b>4.3.</b> UnixDomain</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="part1/transport.html">
+            
+            <span><b>4.4.</b> QUIC</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="part1/transport.html">
+            
+            <span><b>4.5.</b> KCP</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="part1/function.html">
+            
+                
+                    <a href="../part1/function.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Function as Service
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="part2/registry.html">
+            
+                
+                    <a href="../part2/registry.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Registry
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="part2/registry.html">
+            
+            <span><b>6.1.</b> Peer to Peer</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="part2/registry.html">
+            
+            <span><b>6.2.</b> Peer to Multiple</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="part2/registry.html">
+            
+            <span><b>6.3.</b> Zookeeper</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="part2/registry.html">
+            
+            <span><b>6.4.</b> Etcd</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="part2/registry.html">
+            
+            <span><b>6.5.</b> Consul</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="part2/registry.html">
+            
+            <span><b>6.6.</b> mDNS</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="part2/registry.html">
+            
+            <span><b>6.7.</b> In process</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="part3/codec.html">
+            
+                
+                    <a href="../part3/codec.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Codec
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="part3/failmode.html">
+            
+                
+                    <a href="../part3/failmode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        FailMode
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="part3/failmode.html">
+            
+            <span><b>8.1.</b> Failfast</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="part3/failmode.html">
+            
+            <span><b>8.2.</b> Failover</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="part3/failmode.html">
+            
+            <span><b>8.3.</b> Failtry</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="part3/failmode.html">
+            
+            <span><b>8.4.</b> Failbackup</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part3/fork.html">
+            
+                
+                    <a href="../part3/fork.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        Fork
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="part3/broadcast.html">
+            
+                
+                    <a href="../part3/broadcast.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Broadcase
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="part3/selector.html">
+            
+                
+                    <a href="../part3/selector.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        Selector
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="part3/selector.html">
+            
+            <span><b>11.1.</b> Random</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="part3/selector.html">
+            
+            <span><b>11.2.</b> Roundrobin</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="part3/selector.html">
+            
+            <span><b>11.3.</b> Consistent hashing</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="part3/selector.html">
+            
+            <span><b>11.4.</b> Weighted</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="part3/selector.html">
+            
+            <span><b>11.5.</b> Network quality</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="part3/selector.html">
+            
+            <span><b>11.6.</b> Geography</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="part3/selector.html">
+            
+            <span><b>11.7.</b> Customized Selector</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="part3/timeout.html">
+            
+                
+                    <a href="../part3/timeout.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        Timeout
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="part3/metadata.html">
+            
+                
+                    <a href="../part3/metadata.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        Metadata
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="part3/heartbeat.html">
+            
+                
+                    <a href="../part3/heartbeat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        Heartbeat
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="part3/group.html">
+            
+                
+                    <a href="../part3/group.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        Group
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="part3/state.html">
+            
+                
+                    <a href="../part3/state.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        State
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="part3/circuit_breaker.html">
+            
+                
+                    <a href="../part3/circuit_breaker.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        Circuit Breaker
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="part4/metrics.html">
+            
+                
+                    <a href="../part4/metrics.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        Metrics
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="part4/rate-limiting.html">
+            
+                
+                    <a href="../part4/rate-limiting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        Rate Limiting
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="part4/alias.html">
+            
+                
+                    <a href="../part4/alias.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        Alias
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="part4/auth.html">
+            
+                
+                    <a href="../part4/auth.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        Auth
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="part4/plugin-dev.html">
+            
+                
+                    <a href="../part4/plugin-dev.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        Plugin Development
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="part5/benchmark.html">
+            
+                
+                    <a href="../part5/benchmark.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        Benchmark
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="part5/ui.html">
+            
+                
+                    <a href="../part5/ui.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        UI Manager
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="part5/protocol.html">
+            
+                
+                    <a href="../part5/protocol.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        protocol
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26" data-path="part6/gateway.html">
+            
+                
+                    <a href="../part6/gateway.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.</b>
+                        
+                        Gateway
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27" data-path="part6/http_invoke.html">
+            
+                
+                    <a href="../part6/http_invoke.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.</b>
+                        
+                        HTTP Invoke
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="28" data-path="part6/bidirectional.html">
+            
+                
+                    <a href="../part6/bidirectional.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>28.</b>
+                        
+                        Bidirectional
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >rpcx Programming</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="client">Client</h1>
+<p><strong>Example:</strong> <a href="https://github.com/rpcx-ecosystem/rpcx-examples3/tree/master/101basic" target="_blank">101basic</a></p>
+<p>Clients use the same transport protocol to send requests to services and get responses from them.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> Client <span class="hljs-keyword">struct</span> {
+    Conn net.Conn
+
+    Plugins PluginContainer
+    <span class="hljs-comment">// contains filtered or unexported fields</span>
+}
+</code></pre>
+<p><code>Conn</code> is the connection between client and server and <code>Plugins</code> contains client plugins.</p>
+<p>It has methods:</p>
+<pre><code class="lang-go">    <span class="hljs-keyword">func</span> (client *Client) Call(ctx context.Context, servicePath, serviceMethod <span class="hljs-typename">string</span>, args <span class="hljs-keyword">interface</span>{}, reply <span class="hljs-keyword">interface</span>{}) error
+    <span class="hljs-keyword">func</span> (client *Client) Close() error
+    <span class="hljs-keyword">func</span> (c *Client) Connect(network, address <span class="hljs-typename">string</span>) error
+    <span class="hljs-keyword">func</span> (client *Client) Go(ctx context.Context, servicePath, serviceMethod <span class="hljs-typename">string</span>, args <span class="hljs-keyword">interface</span>{}, reply <span class="hljs-keyword">interface</span>{}, done <span class="hljs-keyword">chan</span> *Call) *Call
+    <span class="hljs-keyword">func</span> (client *Client) IsClosing() <span class="hljs-typename">bool</span>
+    <span class="hljs-keyword">func</span> (client *Client) IsShutdown() <span class="hljs-typename">bool</span>
+</code></pre>
+<p><code>Call</code> is a synchronous service invocation&#x3002; Clients are blocked until response are received or some errors are returned. While <code>Go</code> is an asynchronous invocation. It returns a Call pointer and you can check the <code>*Call</code> to get the result or the error.</p>
+<p><code>Close</code> closes the connnection to the service. It won&apos;t wait unfinished requests and closes the connection inmmediately.</p>
+<p><code>IsClosing</code> indicates the client is closing and won&apos;t accept new invocations.
+<code>IsShutdown</code> indicates the client won&apos;t receive responses from the service.</p>
+<p><code>Client</code> uses the default <a href="https://godoc.org/github.com/rubyist/circuitbreaker#NewRateBreaker" target="_blank">CircuitBreaker (circuit.NewRateBreaker(0.95, 100))</a> to handle errors. This is a poplular rpc error handling style. When the error rate hits the threshold, this service is marked unavailable in 10 second window. You can implement your customzied CircuitBreaker.</p>
+<p>There is a client example:</p>
+<pre><code class="lang-go">    client := &amp;Client{
+        option: DefaultOption,
+    }
+
+    err := client.Connect(<span class="hljs-string">&quot;tcp&quot;</span>, addr)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        t.Fatalf(<span class="hljs-string">&quot;failed to connect: %v&quot;</span>, err)
+    }
+    <span class="hljs-keyword">defer</span> client.Close()
+
+    args := &amp;Args{
+        A: <span class="hljs-number">10</span>,
+        B: <span class="hljs-number">20</span>,
+    }
+
+    reply := &amp;Reply{}
+    err = client.Call(context.Background(), <span class="hljs-string">&quot;Arith&quot;</span>, <span class="hljs-string">&quot;Mul&quot;</span>, args, reply)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        t.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, err)
+    }
+
+    <span class="hljs-keyword">if</span> reply.C != <span class="hljs-number">200</span> {
+        t.Fatalf(<span class="hljs-string">&quot;expect 200 but got %d&quot;</span>, reply.C)
+    }
+</code></pre>
+<h2 id="xclient">XClient</h2>
+<p><code>XClient</code> is a client wrapper and adds some service discovery and service governance features.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> XClient <span class="hljs-keyword">interface</span> {
+    SetPlugins(plugins PluginContainer)
+    ConfigGeoSelector(latitude, longitude <span class="hljs-typename">float64</span>)
+    Auth(auth <span class="hljs-typename">string</span>)
+
+    Go(ctx context.Context, serviceMethod <span class="hljs-typename">string</span>, args <span class="hljs-keyword">interface</span>{}, reply <span class="hljs-keyword">interface</span>{}, done <span class="hljs-keyword">chan</span> *Call) (*Call, error)
+    Call(ctx context.Context, serviceMethod <span class="hljs-typename">string</span>, args <span class="hljs-keyword">interface</span>{}, reply <span class="hljs-keyword">interface</span>{}) error
+    Broadcast(ctx context.Context, serviceMethod <span class="hljs-typename">string</span>, args <span class="hljs-keyword">interface</span>{}, reply <span class="hljs-keyword">interface</span>{}) error
+    Fork(ctx context.Context, serviceMethod <span class="hljs-typename">string</span>, args <span class="hljs-keyword">interface</span>{}, reply <span class="hljs-keyword">interface</span>{}) error
+    Close() error
+}
+</code></pre>
+<p><code>SetPlugins</code> set Plugin container and <code>Auth</code> set authentication token.</p>
+<p><code>ConfigGeoSelector</code> is special method to set latitude and longitude of this client and use geography selector.</p>
+<p>One XClient is responsable for one service and can call all methods of this service via <code>serviceMethod</code> argument. If you want to call multiple services, you must create one xclient for each service.</p>
+<p>Only one shared xclient is needed for one corresponding service in a application. It can be shared by goroutines and it is goroutine-safe.</p>
+<p><code>Go</code> is for async invocations and <code>Call</code> is fo sync invocations.</p>
+<p>XClient use the single connection to one service node and it caches the connection until the connection is broken or closed.</p>
+<h3 id="service-discovery">service discovery</h3>
+<p>rpcx support a lot of service discovery and you can aslo implement your service discovery.</p>
+<ul>
+<li><ul>
+<li><a href="part2/registry.md#peer2peer">Peer to Peer</a>: the client connects the single service directly. It acts like the <code>client</code> type.</li>
+<li><a href="part2/registry.md#multiple">Peer to Multiple</a>: the client can connnect multiple services. Ther services are configured programmatically.</li>
+<li><a href="part2/registry.md#zookeeper">Zookeeper</a>: find the services via zookeeper.</li>
+<li><a href="part2/registry.md#etcd">Etcd</a>&#xFF1A; find the service via etcd.</li>
+<li><a href="part2/registry.md#consul">Consul</a>: find the service via consul.</li>
+<li><a href="part2/registry.md#mdns">mDNS</a>: find the service via mDNS that support local service discovery.</li>
+<li><a href="part2/registry.md#inprocess">In process</a>: find services in the same process. Clients call services in process and they don&apos;t commnucaite via TCP or UDP. It is convenient in test.</li>
+</ul>
+</li>
+</ul>
+<p>There is a sync rpcx example:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;context&quot;</span>
+    <span class="hljs-string">&quot;flag&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+
+    example <span class="hljs-string">&quot;github.com/rpcx-ecosystem/rpcx-examples3&quot;</span>
+    <span class="hljs-string">&quot;github.com/smallnest/rpcx/client&quot;</span>
+)
+
+<span class="hljs-keyword">var</span> (
+    addr = flag.String(<span class="hljs-string">&quot;addr&quot;</span>, <span class="hljs-string">&quot;localhost:8972&quot;</span>, <span class="hljs-string">&quot;server address&quot;</span>)
+)
+
+<span class="hljs-keyword">func</span> main() {
+    flag.Parse()
+
+    d := client.NewPeer2PeerDiscovery(<span class="hljs-string">&quot;tcp@&quot;</span>+*addr, <span class="hljs-string">&quot;&quot;</span>)
+    xclient := client.NewXClient(<span class="hljs-string">&quot;Arith&quot;</span>, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    <span class="hljs-keyword">defer</span> xclient.Close()
+
+    args := &amp;example.Args{
+        A: <span class="hljs-number">10</span>,
+        B: <span class="hljs-number">20</span>,
+    }
+
+    reply := &amp;example.Reply{}
+    err := xclient.Call(context.Background(), <span class="hljs-string">&quot;Mul&quot;</span>, args, reply)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, err)
+    }
+
+    log.Printf(<span class="hljs-string">&quot;%d * %d = %d&quot;</span>, args.A, args.B, reply.C)
+
+}
+</code></pre>
+<h3 id="service-governance-fail-mode-and-load-balancing">service governance (Fail mode and Load balancing)</h3>
+<p>In a large scale rpc system, there are a lot of service nodes to provide a same service. How clients select one of most appropriate node to call? If on call failed, clients should select another node or return the error immediately? They are fail mode issue and load balancing issue.</p>
+<p>rpcx support fail mode:</p>
+<ul>
+<li><a href="part3/failmode.md#failfast">Failfast</a>&#xFF1A;  return the error immediately if call failed</li>
+<li><a href="part3/failmode.md#failover">Failover</a> : select another node until reach max retries</li>
+<li><a href="part3/failmode.md#failtry">Failtry</a>: select the same node and retry, until reach max retrirs</li>
+</ul>
+<p>For the load balancing, rpcs provides a lot of selectors:</p>
+<ul>
+<li><a href="part3/random_selector.md">Random</a>: select the nodes randomly<ul>
+<li><a href="part3/roundrobin_selector.md">Roundrobin</a> : select the node by roundrobin</li>
+<li><a href="part3/hash_selector.md">Consistent hashing</a>: select the same node if servicePath, serviceMethod and Args. It uses the <a href="https://arxiv.org/abs/1406.2294" target="_blank">jump consistent hash</a> and is very fast.</li>
+<li><a href="part3/weighted_selector.md">Weighted</a>: use the weighted which is configured in metadata of services(<code>weight=xxx</code>). The algorithm is like nginx implementation(smooth weighted algorithm)</li>
+<li><a href="part3/ping_selector.md">Network quality</a>: It uses the <code>ping</code> results. The better the quality of the network, the higher the probability of election of nodes</li>
+<li><a href="part3/geo_selector.md">Geography</a>: If there are multiple datacenters, clients perfer to connect service in the same datacenter.</li>
+<li><a href="part3/user_selector.md">Customized Selector</a>: If the above selectors are not suitable for you, you can use your customized selector. For example, one of rpcx customers has defined its selector for two datacenters because they can&apos;t use <code>Network quality</code> because of some limits.</li>
+</ul>
+</li>
+</ul>
+<p>There is an async rpcx example:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;context&quot;</span>
+    <span class="hljs-string">&quot;flag&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+
+    example <span class="hljs-string">&quot;github.com/rpcx-ecosystem/rpcx-examples3&quot;</span>
+    <span class="hljs-string">&quot;github.com/smallnest/rpcx/client&quot;</span>
+)
+
+<span class="hljs-keyword">var</span> (
+    addr2 = flag.String(<span class="hljs-string">&quot;addr&quot;</span>, <span class="hljs-string">&quot;localhost:8972&quot;</span>, <span class="hljs-string">&quot;server address&quot;</span>)
+)
+
+<span class="hljs-keyword">func</span> main() {
+    flag.Parse()
+
+    d := client.NewPeer2PeerDiscovery(<span class="hljs-string">&quot;tcp@&quot;</span>+*addr2, <span class="hljs-string">&quot;&quot;</span>)
+    xclient := client.NewXClient(<span class="hljs-string">&quot;Arith&quot;</span>, client.Failtry, client.RandomSelect, d, client.DefaultOption)
+    <span class="hljs-keyword">defer</span> xclient.Close()
+
+    args := &amp;example.Args{
+        A: <span class="hljs-number">10</span>,
+        B: <span class="hljs-number">20</span>,
+    }
+
+    reply := &amp;example.Reply{}
+    call, err := xclient.Go(context.Background(), <span class="hljs-string">&quot;Mul&quot;</span>, args, reply, <span class="hljs-constant">nil</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-constant">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, err)
+    }
+
+    replyCall := &lt;-call.Done
+    <span class="hljs-keyword">if</span> replyCall.Error != <span class="hljs-constant">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;failed to call: %v&quot;</span>, replyCall.Error)
+    } <span class="hljs-keyword">else</span> {
+        log.Printf(<span class="hljs-string">&quot;%d * %d = %d&quot;</span>, args.A, args.B, reply.C)
+    }
+}
+</code></pre>
+<p>the client uses <code>Failtry</code> mode and selects the nodes randomly.</p>
+<h3 id="broadcast-and-fork">Broadcast and Fork</h3>
+<p>And for rare cases, you can use <code>Broadcast</code>&#x3001;<code>Fork</code> methods of XClient</p>
+<pre><code class="lang-go">    Broadcast(ctx context.Context, serviceMethod <span class="hljs-typename">string</span>, args <span class="hljs-keyword">interface</span>{}, reply <span class="hljs-keyword">interface</span>{}) error
+    Fork(ctx context.Context, serviceMethod <span class="hljs-typename">string</span>, args <span class="hljs-keyword">interface</span>{}, reply <span class="hljs-keyword">interface</span>{}) error
+</code></pre>
+<p><code>Broadcast</code> sends requests to all servers and Success only when all servers return OK.FailMode and SelectMode are meanless for this method.Please set timeout to avoid hanging.</p>
+<p><code>Fork</code> sends requests to all servers and Success once any one server returns OK.
+FailMode and SelectMode are meanless for this method.</p>
+<p>You can use <code>NewXClient</code> to get a xclient instance.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> NewXClient(servicePath <span class="hljs-typename">string</span>, failMode FailMode, selectMode SelectMode, discovery ServiceDiscovery, option Option) XClient
+</code></pre>
+<p><code>NewXClient</code> must use the service name as the first argument, then failmode, selector, discovery and other options.</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
+2018-02-12 15:10:40
+</span></footer>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../part1/server.html" class="navigation navigation-prev " aria-label="Previous page: Server"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../part1/transport.html" class="navigation navigation-next " aria-label="Next page: Transport"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"theme-default":{"showLevel":true},"toc":{"addClass":true,"className":"toc"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_label":"<i>updated</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"disqus":{"shortName":"rpcx-programming","useIdentifier":false},"anchors":{},"multipart":{},"timeline":{},"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

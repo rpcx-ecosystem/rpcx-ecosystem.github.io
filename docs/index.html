@@ -1,0 +1,846 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Introduction | rpcx Programming</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="A guide about rpcx development">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="smallnest &lt;smallnest@gmail.com&gt;">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-multipart/multipart.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-page-footer-ex/style/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-timeline/timeline.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-katex/katex.min.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-disqus/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./part1/quickstart.html" />
+    
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="0"
+        data-chapter-title="Introduction"
+        data-filepath="README.md"
+        data-basepath="."
+        data-revision="Mon Feb 12 2018 17:53:13 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="http://rpcx.site/" target="blank" class="custom-link">rpcx官方站点</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter active" data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part1/quickstart.html">
+            
+                
+                    <a href="./part1/quickstart.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        QuickStart
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part1/server.html">
+            
+                
+                    <a href="./part1/server.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Server
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="part1/client.html">
+            
+                
+                    <a href="./part1/client.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Client
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="part1/transport.html">
+            
+                
+                    <a href="./part1/transport.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Transport
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="part1/transport.html">
+            
+            <span><b>4.1.</b> TCP</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="part1/transport.html">
+            
+            <span><b>4.2.</b> HTTP</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="part1/transport.html">
+            
+            <span><b>4.3.</b> UnixDomain</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="part1/transport.html">
+            
+            <span><b>4.4.</b> QUIC</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="part1/transport.html">
+            
+            <span><b>4.5.</b> KCP</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="part1/function.html">
+            
+                
+                    <a href="./part1/function.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Function as Service
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="part2/registry.html">
+            
+                
+                    <a href="./part2/registry.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Registry
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="part2/registry.html">
+            
+            <span><b>6.1.</b> Peer to Peer</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="part2/registry.html">
+            
+            <span><b>6.2.</b> Peer to Multiple</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="part2/registry.html">
+            
+            <span><b>6.3.</b> Zookeeper</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="part2/registry.html">
+            
+            <span><b>6.4.</b> Etcd</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="part2/registry.html">
+            
+            <span><b>6.5.</b> Consul</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="part2/registry.html">
+            
+            <span><b>6.6.</b> mDNS</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="part2/registry.html">
+            
+            <span><b>6.7.</b> In process</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="part3/codec.html">
+            
+                
+                    <a href="./part3/codec.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Codec
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="part3/failmode.html">
+            
+                
+                    <a href="./part3/failmode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        FailMode
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="part3/failmode.html">
+            
+            <span><b>8.1.</b> Failfast</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="part3/failmode.html">
+            
+            <span><b>8.2.</b> Failover</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="part3/failmode.html">
+            
+            <span><b>8.3.</b> Failtry</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="part3/failmode.html">
+            
+            <span><b>8.4.</b> Failbackup</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part3/fork.html">
+            
+                
+                    <a href="./part3/fork.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        Fork
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="part3/broadcast.html">
+            
+                
+                    <a href="./part3/broadcast.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Broadcase
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="part3/selector.html">
+            
+                
+                    <a href="./part3/selector.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        Selector
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="part3/selector.html">
+            
+            <span><b>11.1.</b> Random</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="part3/selector.html">
+            
+            <span><b>11.2.</b> Roundrobin</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="part3/selector.html">
+            
+            <span><b>11.3.</b> Consistent hashing</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="part3/selector.html">
+            
+            <span><b>11.4.</b> Weighted</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="part3/selector.html">
+            
+            <span><b>11.5.</b> Network quality</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="part3/selector.html">
+            
+            <span><b>11.6.</b> Geography</span>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="part3/selector.html">
+            
+            <span><b>11.7.</b> Customized Selector</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="part3/timeout.html">
+            
+                
+                    <a href="./part3/timeout.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        Timeout
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="part3/metadata.html">
+            
+                
+                    <a href="./part3/metadata.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        Metadata
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="part3/heartbeat.html">
+            
+                
+                    <a href="./part3/heartbeat.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        Heartbeat
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="part3/group.html">
+            
+                
+                    <a href="./part3/group.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        Group
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="part3/state.html">
+            
+                
+                    <a href="./part3/state.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        State
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="part3/circuit_breaker.html">
+            
+                
+                    <a href="./part3/circuit_breaker.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        Circuit Breaker
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="part4/metrics.html">
+            
+                
+                    <a href="./part4/metrics.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        Metrics
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="part4/rate-limiting.html">
+            
+                
+                    <a href="./part4/rate-limiting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        Rate Limiting
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="part4/alias.html">
+            
+                
+                    <a href="./part4/alias.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        Alias
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="part4/auth.html">
+            
+                
+                    <a href="./part4/auth.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        Auth
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="part4/plugin-dev.html">
+            
+                
+                    <a href="./part4/plugin-dev.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        Plugin Development
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="part5/benchmark.html">
+            
+                
+                    <a href="./part5/benchmark.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        Benchmark
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="part5/ui.html">
+            
+                
+                    <a href="./part5/ui.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        UI Manager
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="part5/protocol.html">
+            
+                
+                    <a href="./part5/protocol.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        protocol
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26" data-path="part6/gateway.html">
+            
+                
+                    <a href="./part6/gateway.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.</b>
+                        
+                        Gateway
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27" data-path="part6/http_invoke.html">
+            
+                
+                    <a href="./part6/http_invoke.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.</b>
+                        
+                        HTTP Invoke
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="28" data-path="part6/bidirectional.html">
+            
+                
+                    <a href="./part6/bidirectional.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>28.</b>
+                        
+                        Bidirectional
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >rpcx Programming</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="rpcx-introduction">RPCX Introduction</h1>
+<p><a href="http://rpcx.site" target="_blank">rpcx</a> is a RPC framework, faster, more features.</p>
+<p>rpcx 2.0 and below extends Go standard rpc package but rpcx 3.0 has been refactored and doesn&apos;t use Go standard rpc anymore&#x3002;</p>
+<p>RPCX has developed for those targets:</p>
+<ul>
+<li><strong>Simple</strong>: easy to learn, easy to develop, easy to intergate and easy to deploy</li>
+<li><strong>Performance</strong>: high perforamnce (much better than grpc-go)</li>
+<li><strong>Cross-platform</strong>: support raw slice of bytes, JSON, Protobuf and MessagePack. Theoretically it can be use in java, php, python, c/c++, node.js, c# and other platforms</li>
+<li><strong>Service discovery and service governance</strong>: support zookeeper, etcd and consul.</li>
+</ul>
+<p>It contains a lot of features:</p>
+<ul>
+<li>Support raw Go functions,. No need to define proto files.</li>
+<li>Pluggable. Features can be extended such as service discovery, tracing.</li>
+<li>Support TCP, HTTP, QUIC and KCP</li>
+<li>Support multiple codecs such as JSON&#x3001;Protobuf&#x3001;MessagePack and raw bytes.</li>
+<li>Service discovery. Support peer2peer, configured peers, zookeeper, etcd, consul and mDNS.</li>
+<li>Fault tolerance&#xFF1A;Failover&#x3001;Failfast&#x3001;Failtry.</li>
+<li>Load banlancing&#xFF1A;support Random, RoundRobin, Consistent hashing, Weighted, network quality and Geography.</li>
+<li>Support Compression.</li>
+<li>Support passing metadata.</li>
+<li>Support Authorization.</li>
+<li>Support heartbeat and one-way request.</li>
+<li>Other features: metrics, log, timeout, alias, CircuitBreaker.</li>
+<li>rpcx uses a binary protocol and platform-independent, that means you can develop services in other languages such as Java, python, nodejs, and you can use other prorgramming languages to invoke services developed in Go.</li>
+</ul>
+<p>There is a UI manager: <a href="https://github.com/smallnest/rpcx-ui" target="_blank">rpcx-ui</a>.</p>
+<h2 id="rpc">RPC</h2>
+<p>RPC (remote procedure call) is when a computer program causes a procedure (subroutine) to execute in a different address space (commonly on another computer on a shared network), which is coded as if it were a normal (local) procedure call, without the programmer explicitly coding the details for the remote interaction. That is, the programmer writes essentially the same code whether the subroutine is local to the executing program, or remote. This is a form of client&#x2013;server interaction (caller is client, executor is server), typically implemented via a <strong>request&#x2013;response</strong> message-passing system.  The RPC model implies a level of location transparency, namely that calling procedures is largely the same whether it is local or remote, but usually they are not identical, so local calls can be distinguished from remote calls. Remote calls are usually orders of magnitude slower and less reliable than local calls, so distinguishing them is important.</p>
+<p>Response&#x2013;request protocols date to early distributed computing in the late 1960s, theoretical proposals of remote procedure calls as the model of network operations date to the 1970s, and practical implementations date to the early 1980s. In the 1990s, with the popularity of object-oriented programming, the alternative model of remote method invocation (RMI) was widely implemented, such as in Common Object Request Broker Architecture (CORBA, 1991) and Java remote method invocation. RMIs in turn fell in popularity with the rise of the internet, particularly in the 2000s.</p>
+<p>Remote procedure calls used in modern operating systems trace their roots back to the RC 4000 multiprogramming system, which used a request-response communication protocol for process synchronization. The idea of treating network operations as remote procedure calls goes back at least to the 1970s in early ARPANET documents. In 1978, Per Brinch Hansen proposed Distributed Processes, a language for distributed computing based on &quot;external requests&quot; consisting of procedure calls between processes.</p>
+<p>Bruce Jay Nelson is generally credited with coining the term &quot;remote procedure call&quot; (1981), and the first practical implementation was by Andrew Birrel and Bruce Nelson, called Lupine, in the Cedar environment at Xerox PARC. Lupine automatically generated stubs, providing type-safe bindings, and used an efficient protocol for communication. One of the first business uses of RPC was by Xerox under the name &quot;Courier&quot; in 1981. The first popular implementation of RPC on Unix was Sun&apos;s RPC (now called ONC RPC), used as the basis for Network File System.</p>
+<p>RPC is a kind of request&#x2013;response protocol. An RPC is initiated by the client, which sends a request message to a known remote server to execute a specified procedure with supplied parameters. The remote server sends a response to the client, and the application continues its process. While the server is processing the call, the client is blocked (it waits until the server has finished processing before resuming execution), unless the client sends an asynchronous request to the server, such as an XHTTP call. There are many variations and subtleties in various implementations, resulting in a variety of different (incompatible) RPC protocols.</p>
+<p>An important difference between remote procedure calls and local calls is that remote calls can fail because of unpredictable network problems. Also, callers generally must deal with such failures without knowing whether the remote procedure was actually invoked. Idempotent procedures (those that have no additional effects if called more than once) are easily handled, but enough difficulties remain that code to call remote procedures is often confined to carefully written low-level subsystems.</p>
+<p><img src="RPC.gif" alt="from microsoft" title="from microsoft"></p>
+<p>The above text is from <a href="https://en.wikipedia.org/wiki/RPC" target="_blank">wikipedia</a>.</p>
+<p>RPC is widely used in the microservice architure.</p>
+<p>Microservices is a variant of the service-oriented architecture (SOA) architectural style that structures an application as a collection of loosely coupled services. In a microservices architecture, services should be fine-grained and the protocols should be lightweight. The benefit of decomposing an application into different smaller services is that it improves modularity and makes the application easier to understand, develop and test. It also parallelizes development by enabling small autonomous teams to develop, deploy and scale their respective services independently. It also allows the architecture of an individual service to emerge through continuous refactoring. Microservices-based architectures enable continuous delivery and deployment.</p>
+<p>Commnucations between microservices can be used RPC or RESTful. They can aslo use other kinds of inter-process communication mechanisms.</p>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright">By <em>smallnest</em></span>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;<span class="page-footer-ex-footer-update"><i>updated</i>
+2018-02-12 13:26:50
+</span></footer>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        
+        <a href="./part1/quickstart.html" class="navigation navigation-next navigation-unique" aria-label="Next page: QuickStart"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"theme-default":{"showLevel":true},"toc":{"addClass":true,"className":"toc"},"page-footer-ex":{"copyright":"By <em>smallnest</em>","markdown":false,"update_label":"<i>updated</i>","update_format":"YYYY-MM-DD HH:mm:ss"},"disqus":{"shortName":"rpcx-programming","useIdentifier":false},"anchors":{},"multipart":{},"timeline":{},"katex":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
