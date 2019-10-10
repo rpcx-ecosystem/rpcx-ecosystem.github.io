@@ -10,7 +10,8 @@
     <link rel="shortcut icon" href="favicon.ico" type="img/x-icon">
 
     <link href='https://fonts.loli.net/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.loli.net/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600'
+    <link
+        href='https://fonts.loli.net/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600'
         rel='stylesheet' type='text/css'>
     <link href='https://fonts.loli.net/css?family=Audiowide:400,700' rel='stylesheet' type='text/css'>
 
@@ -50,8 +51,11 @@
 
             <div class="rpcx-one-word">
                 <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/smallnest/rpcx" data-size="large" data-show-count="true" aria-label="Star smallnest/rpcx on GitHub">Star</a><!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/smallnest/rpcx/fork" data-size="large" data-show-count="true" aria-label="Fork smallnest/rpcx on GitHub">Fork</a>
+                <a class="github-button" href="https://github.com/smallnest/rpcx" data-size="large"
+                    data-show-count="true" aria-label="Star smallnest/rpcx on GitHub">Star</a>
+                <!-- Place this tag where you want the button to render. -->
+                <a class="github-button" href="https://github.com/smallnest/rpcx/fork" data-size="large"
+                    data-show-count="true" aria-label="Fork smallnest/rpcx on GitHub">Fork</a>
             </div>
         </div>
     </header>
@@ -81,6 +85,9 @@
                 </li>
                 <li>
                     <a href="https://github.com/smallnest/rpcx/graphs/contributors">贡献者</a>
+                </li>
+                <li>
+                    <a href="https://blog.rpcx.io">开发者博客</a>
                 </li>
             </ul>
             <a class="res-nav_click" href="#">
@@ -188,7 +195,8 @@
                 <div class="col-lg-7 col-sm-8 benchmark-intro">
                     <h2>Benchmark</h2>
                     <ul class="list-group">
-                        <li class="list-group-item borderless opacity">CPU: Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz, 32 cores</li>
+                        <li class="list-group-item borderless opacity">CPU: Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz,
+                            32 cores</li>
                         <li class="list-group-item borderless opacity">Memory: 32G</li>
                         <li class="list-group-item borderless opacity">Go: 1.9.1</li>
                         <li class="list-group-item borderless opacity">OS: CentOS 7 / 3.10.0-229.el7.x86_64</li>
@@ -200,29 +208,30 @@
                         <div class="benchmark-box-col2 wow fadeInRight delay-02s">
                             <h3>吞吐率</h3>
                             <p>rpcx: 192300 request/second <i>(grpc-go: 106886 request/second)</i></p>
+                        </div>
+                        <div class="benchmark-box">
+                            <div class="benchmark-box-col1 wow fadeInRight delay-04s">
+                                <i class="fa-bar-chart"></i>
+                            </div>
+                            <div class="benchmark-box-col2 wow fadeInRight delay-04s">
+                                <h3>平均时间/中位数时间</h3>
+                                <p>rpcx: 25/12 ms <i>(grpc-go: 46/41 ms)</i></p>
+                            </div>
+                        </div>
+                        <div class="benchmark-box">
+                            <div class="benchmark-box-col1 wow fadeInRight delay-06s">
+                                <i class="fa-line-chart"></i>
+                            </div>
+                            <div class="benchmark-box-col2 wow fadeInRight delay-06s">
+                                <h3>最小时间</h3>
+                                <p>rpcx: 0 ms <i>(grpc-go: 0 ms)</i></p>
+                            </div>
+                        </div>
+                        <a class="more"
+                            href="https://smallnest.gitbooks.io/rpcx-programming/content/part5/benchmark.html">了解更多</a>
                     </div>
-                    <div class="benchmark-box">
-                        <div class="benchmark-box-col1 wow fadeInRight delay-04s">
-                            <i class="fa-bar-chart"></i>
-                        </div>
-                        <div class="benchmark-box-col2 wow fadeInRight delay-04s">
-                            <h3>平均时间/中位数时间</h3>
-                            <p>rpcx: 25/12 ms <i>(grpc-go: 46/41 ms)</i></p>
-                        </div>
-                    </div>
-                    <div class="benchmark-box">
-                        <div class="benchmark-box-col1 wow fadeInRight delay-06s">
-                            <i class="fa-line-chart"></i>
-                        </div>
-                        <div class="benchmark-box-col2 wow fadeInRight delay-06s">
-                            <h3>最小时间</h3>
-                            <p>rpcx: 0 ms <i>(grpc-go: 0 ms)</i></p>
-                        </div>
-                    </div>
-                    <a class="more" href="https://smallnest.gitbooks.io/rpcx-programming/content/part5/benchmark.html">了解更多</a>
                 </div>
             </div>
-        </div>
     </section>
 
     <footer class="footer">
@@ -237,15 +246,15 @@
     </footer>
     <script type="text/javascript" src="js/rpcx.js"></script>
     <script>
-            var _hmt = _hmt || [];
-            (function() {
-              var hm = document.createElement("script");
-              hm.src = "https://hm.baidu.com/hm.js?b16eab620145cddb96aa7969a2bea70e";
-              var s = document.getElementsByTagName("script")[0]; 
-              s.parentNode.insertBefore(hm, s);
-            })();
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b16eab620145cddb96aa7969a2bea70e";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
-            
+
 </body>
 
 </html>
